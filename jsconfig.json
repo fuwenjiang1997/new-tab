@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ES6",
+    "jsx": "preserve",
+    "lib": ["ES6", "DOM", "WebWorker"],
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@/*": ["./src/*"],
+      "~/*": ["./src/*"],
+      "src/*": ["./src/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@overrides": ["./src/overrides/*"],
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "unplugin-icons/types/vue"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "package.json",
+    "vite.config.js",
+    "manifest.config.js",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.vue",
+    "src/**/**/*.vue"
+  ]
+}
