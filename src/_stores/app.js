@@ -9,13 +9,16 @@ export default defineStore('app', () => {
   const menus = useStorage('menus', [])
   const bookmarks = useStorage('bookmarks', {})
   const todos = useStorage('todos', {})
+  const alarmTasks = useStorage('alarmTasks', {})
   const now = ref(dayjs())
   const nowDay = computed(() => now.value.format('YYYY-MM-DD'))
   const nowDayTodos = computed(() => {
     return todos.value[nowDay.value] || []
   })
 
-  const gHandlerMap = {}
+  const gHandlerMap = {
+    
+  }
 
   function checkItemIsNotifify(params, _now = dayjs()) {
     const {
@@ -120,6 +123,7 @@ export default defineStore('app', () => {
     menus,
     bookmarks,
     todos,
-    nowDay
+    nowDay,
+    alarmTasks
   }
 })
