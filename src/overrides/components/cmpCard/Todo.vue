@@ -21,7 +21,7 @@
           <div class="flex gap-2 pt-2 px-4" v-for="item in dayTodos">
             <a-checkbox v-model:checked="item.completed"></a-checkbox>
             <p class="flex-1" @click="editTodo(item)">
-              <span class="text-white">{{ item.title }}</span>
+              <span class="text-white">{{ item.name }}</span>
             </p>
             <div class="flex-center text-xs">
               <template v-if="item.notification">
@@ -48,20 +48,23 @@
   <a-modal v-model:open="open" :title="todoForm.id ? '编辑Todo' : '新增Todo'" @ok="saveTodo">
     <div class="mt-5">
       <a-form :model="todoForm" :label-col="{ span: 6 }" :wrapper-col="{ span: 18 }">
-        <a-form-item label="名称" name="title" :rules="[{ required: true }]">
-          <a-input v-model:value="todoForm.title" />
+        <a-form-item label="名称" name="name" :rules="[{ required: true }]">
+          <a-input v-model:value="todoForm.name" />
         </a-form-item>
         <a-form-item label="描述" name="description">
           <a-textarea v-model:value="todoForm.description" :rows="4" />
         </a-form-item>
         <a-form-item label="开启通知" name="notification">
-          <a-switch v-model:checked="todoForm.notification" />
+          <a-switch :checked="todoForm.notification" @update:checked="changeTodoFormNotification" />
         </a-form-item>
 
         <template v-if="todoForm.notification">
           <a-form-item label="开始通知时间" name="notificationStartTime" :rules="[{ required: true }]">
-            <a-time-picker :value="dayjs(todoForm.notificationStartTime || undefined)"
-              @update:value="(v) => todoForm.notificationStartTime = v" format="HH:mm" />
+            <a-time-picker
+              v-model:value="todoForm.notificationStartTime"
+              format="HH:mm"
+              valueFormat="YYYY-MM-DD HH:mm:ss"
+              />
           </a-form-item>
 
           <a-form-item label="通知间隔" name="notificationRepeatTime">
@@ -102,7 +105,7 @@ const activeDay = ref(dayjs().format('YYYY-MM-DD'))
 
 const baseTody = function () {
   return {
-    title: '待办事项',
+    name: '待办事项',
     description: '',
     completed: false,
     index: 0,
@@ -119,6 +122,13 @@ const baseTody = function () {
 const dayTodos = computed(() => {
   return appStore.todos[activeDay.value] || []
 })
+
+const changeTodoFormNotification = (newStatus) => {
+  if (newStatus && !todoForm.value.notificationStartTime) {
+    todoForm.value.notificationStartTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
+  }
+  todoForm.value.notification = newStatus
+}
 
 const editTodo = (v) => {
   if (v) {
@@ -141,12 +151,16 @@ const saveTodo = () => {
   }
   appStore.todos[activeDay.value] = todoList
   open.value = false
+  appStore.updateAlarm(todoData)
 }
 
 const deleteTodo = (v) => {
   const todoList = appStore.todos[activeDay.value] || []
   const index = todoList.findIndex((item) => item.id === v.id)
-  todoList.splice(index, 1)
-  appStore.todos[activeDay.value] = todoList
+  if (index !== -1) {
+    appStore.clearAlarm(todoList[index])
+    todoList.splice(index, 1)
+    appStore.todos[activeDay.value] = todoList
+  }
 }
 </script>

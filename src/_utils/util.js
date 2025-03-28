@@ -10,3 +10,26 @@ export function generateRandomString(length) {
 
   return result
 }
+
+
+export function chromeNotification(options = {}, callback) {
+  options = {
+    type: 'basic',
+    iconUrl: "/logo.png",
+    title: 'Notification title',
+    message: 'Notification message',
+    eventTime: Date.now(),
+    ...options
+  }
+  chrome.notifications.create(
+    options,
+    (id) => {
+      if (chrome.runtime.lastError) {
+        console.error('Notification creation failed:', chrome.runtime.lastError.message);
+      } else {
+        console.log('Notification created with ID:', id);
+      }
+      callback?.(id)
+    }
+  )
+}

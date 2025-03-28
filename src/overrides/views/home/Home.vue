@@ -19,7 +19,7 @@
     <div class="flex gap-5 mt-20 w-4/5 mx-auto">
       <div class="flex-1 icon-card-container">
         <GoOffWork></GoOffWork>
-        <Weather></Weather>
+        <!-- <Weather></Weather> -->
         <MyIconCard class="icon-size-1x1 bg-red-100" title="测试icon">111</MyIconCard>
         <MyIconCard class="icon-size-1x1 bg-red-100" title="测试icon">111</MyIconCard>
         <MyIconCard class="icon-size-1x1 bg-red-100" title="测试icon">111</MyIconCard>
