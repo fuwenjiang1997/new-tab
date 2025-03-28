@@ -1,8 +1,9 @@
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { onBeforeMount, onMounted, computed, watch, ref } from 'vue'
-import { chromeNotification } from '@/_utils/util'
+import { onBeforeMount, onMounted, computed, ref } from 'vue'
 import dayjs from 'dayjs'
+import { chromeNotification, generateRandomString } from '@/_utils/util'
+import { NOTIFICATION_JUST_MESSAGE, NOTIFICATION_ALARM, NOTIFICATION_TODO } from '@/_utils/const'
 
 export default defineStore('app', () => {
   const menus = useStorage('menus', [])
@@ -10,55 +11,115 @@ export default defineStore('app', () => {
   const todos = useStorage('todos', {})
   const now = ref(dayjs())
   const nowDay = computed(() => now.value.format('YYYY-MM-DD'))
+  const nowDayTodos = computed(() => {
+    return todos.value[nowDay.value] || []
+  })
 
-  async function clearAllAlarm() {
-    await chrome.alarms.clearAll()
+  const gHandlerMap = {}
+
+  function checkItemIsNotifify(params, _now = dayjs()) {
+    const {
+      notificationRepeatTime,
+      notificationRepeatTimebase,
+      notificationLastNotifyTime,
+      notification,
+      notificationStartTime,
+      notificationCompleted,
+    } = params
+
+    if (notificationCompleted || !notification || !notificationStartTime) {
+      return false
+    }
+
+    return notificationLastNotifyTime
+        ? _now.isAfter(
+          dayjs(notificationLastNotifyTime).add(
+            notificationRepeatTime * notificationRepeatTimebase,
+            'millisecond'
+          )
+        )
+        : _now.isAfter(dayjs(notificationStartTime))
   }
 
+  // 执行通知检查
+  async function checkNotificationAction() {
+    const _now = dayjs()
+    for (let i = 0; i < nowDayTodos.value.length; i++) {
+      const todo = nowDayTodos.value[i]
+      const { name, notificationRepeatCount } = todo
+      if (checkItemIsNotifify(todo, _now)) {
+        chromeNotification(
+          `${generateRandomString(10)}%_%${NOTIFICATION_TODO}%_%${todo.id}`,
+          {
+            title: `提醒您：${name}`,
+            message: '任务即将开始，请尽快完成',
+            buttons: [
+              { title: '关闭通知' }
+            ]
+          }
+        )
 
-  async function setAllAlarmState() {
-    const todoList = todos.value[nowDay.value]
-    await clearAllAlarm()
-    for (const todo of todoList) {
-      await updateAlarm(todo)
+        todo.notificationSuccessCount += 1
+        todo.notificationLastNotifyTime = _now.valueOf()
+        if (notificationRepeatCount >= 1 && todo.notificationSuccessCount >= notificationRepeatCount) {
+          todo.notificationCompleted = true
+        }
+      }
     }
   }
 
-  async function updateAlarm(todo) {
-    const { id, name, notificationRepeatTime, notificationRepeatTimebase, notification, notificationStartTime, notificationCompleted  } = todo
-    const alarmName = `${id}%_%${name}`
-    await chrome.alarms.clear(alarmName)
-    if (notification && notificationStartTime && !notificationCompleted) {
-      chrome.alarms.create(`${alarmName}`, {
-        periodInMinutes: notificationRepeatTime * notificationRepeatTimebase / 60000,
-        when: dayjs(notificationStartTime).valueOf()
-      })
+  function notificationBtnEventHandler() {
+    const eventHandler = {
+      // 普通通知
+      [NOTIFICATION_JUST_MESSAGE]: () => {
+  
+      },
+      // 定时通知
+      [NOTIFICATION_ALARM]: (btnIndex, todoId, handlerName, ...args) => {
+        
+      },
+       // todo通知
+      [NOTIFICATION_TODO]: (btnIndex, todoId, handlerName, ...args) => {
+        if (btnIndex === 0) {
+          // 关闭通知
+          const todo = nowDayTodos.value.find(todo => todo.id == todoId)
+          todo.notificationCompleted = true
+        }
+        if (btnIndex === 1 && handlerName) {
+          gHandlerMap[handlerName]?.(...args)
+        }
+      }
     }
+    
+    chrome.notifications.onButtonClicked.addListener(function(notificationId, buttonIndex) {
+      const info = notificationId.split('%_%')
+      eventHandler[info[1]]?.(buttonIndex, ...info.slice(2))
+      // 关闭通知
+      chrome.notifications.clear(notificationId);
+    });
   }
 
-  async function clearAlarm(todo) {
-     const alarmName = `${todo.id}%_%${todo.name}`
-    await chrome.alarms.clear(alarmName)
-  }
-
-  let timer
+  let nowTimetimer
+  let notifiCheckTimer
   onMounted(() => {
-    timer = setInterval(() => {
+    nowTimetimer = setInterval(() => {
       now.value = dayjs()
     }, 1000)
-    setAllAlarmState()
+    notifiCheckTimer = setInterval(() => {
+      checkNotificationAction()
+    }, 10000)
+    notificationBtnEventHandler()
   })
+
   onBeforeMount(() => {
-    clearInterval(timer)
+    clearInterval(nowTimetimer)
+    clearInterval(notifiCheckTimer)
   })
 
   return {
     menus,
     bookmarks,
     todos,
-    nowDay,
-    clearAlarm,
-    setAllAlarmState,
-    updateAlarm
+    nowDay
   }
 })

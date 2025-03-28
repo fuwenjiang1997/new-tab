@@ -54,8 +54,13 @@
         <a-form-item label="描述" name="description">
           <a-textarea v-model:value="todoForm.description" :rows="4" />
         </a-form-item>
+      
         <a-form-item label="开启通知" name="notification">
           <a-switch :checked="todoForm.notification" @update:checked="changeTodoFormNotification" />
+        </a-form-item>
+
+        <a-form-item v-if="todoForm.notificationCompleted" label="通知已完成" name="notificationCompleted">
+          <a-switch v-model:checked="todoForm.notificationCompleted" />
         </a-form-item>
 
         <template v-if="todoForm.notification">
@@ -111,6 +116,7 @@ const baseTody = function () {
     index: 0,
     notification: false,
     notificationStartTime: '',
+    notificationLastNotifyTime: '', // 上一次通知的时间
     notificationRepeatCount: 0,
     notificationSuccessCount: 0, // 已通知次数
     notificationRepeatTime: 5,
@@ -151,14 +157,13 @@ const saveTodo = () => {
   }
   appStore.todos[activeDay.value] = todoList
   open.value = false
-  appStore.updateAlarm(todoData)
+  // appStore.updateAlarm(todoData)
 }
 
 const deleteTodo = (v) => {
   const todoList = appStore.todos[activeDay.value] || []
   const index = todoList.findIndex((item) => item.id === v.id)
   if (index !== -1) {
-    appStore.clearAlarm(todoList[index])
     todoList.splice(index, 1)
     appStore.todos[activeDay.value] = todoList
   }

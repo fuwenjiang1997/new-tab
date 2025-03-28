@@ -12,7 +12,12 @@ export function generateRandomString(length) {
 }
 
 
-export function chromeNotification(options = {}, callback) {
+export function chromeNotification(notificationId, options = {}, callback) {
+  if (typeof notificationId === 'object') {
+    callback = options
+    options = notificationId
+    notificationId = generateRandomString(10)
+  }
   options = {
     type: 'basic',
     iconUrl: "/logo.png",
@@ -22,6 +27,7 @@ export function chromeNotification(options = {}, callback) {
     ...options
   }
   chrome.notifications.create(
+    notificationId,
     options,
     (id) => {
       if (chrome.runtime.lastError) {
