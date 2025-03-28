@@ -81,7 +81,7 @@ export default defineStore('app', () => {
             message: '任务即将开始，请尽快完成',
             buttons: [
               { title: '关闭通知' },
-              { title: '执行任务' }
+              // { title: '执行任务' }
             ]
           }
         )
