@@ -9,7 +9,7 @@ export default defineStore('app', () => {
   const menus = useStorage('menus', [])
   const bookmarks = useStorage('bookmarks', {})
   const todos = useStorage('todos', {})
-  const alarmTasks = useStorage('alarmTasks', {})
+  const alarmTasks = useStorage('alarmTasks', [])
   const now = ref(dayjs())
   const nowDay = computed(() => now.value.format('YYYY-MM-DD'))
   const nowDayTodos = computed(() => {
@@ -69,6 +69,25 @@ export default defineStore('app', () => {
         }
       }
     }
+
+    for (let i = 0; i < alarmTasks.value.length; i++) {
+      const alarmTask = alarmTasks.value[i]
+      const isNotifyWeekDay = alarmTask.weeks[_now.day()]
+      if (isNotifyWeekDay && checkItemIsNotifify(alarmTask, _now)) {
+        chromeNotification(
+          `${generateRandomString(10)}%_%${NOTIFICATION_ALARM}%_%${alarmTask.id}`,
+          {
+            title: `提醒您：${alarmTask.name}`,
+            message: '任务即将开始，请尽快完成',
+            buttons: [
+              { title: '关闭通知' },
+              { title: '执行任务' }
+            ]
+          }
+        )
+      }
+    }
+
   }
 
   function notificationBtnEventHandler() {
@@ -123,6 +142,7 @@ export default defineStore('app', () => {
     menus,
     bookmarks,
     todos,
+    now,
     nowDay,
     alarmTasks
   }

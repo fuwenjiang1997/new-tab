@@ -7,7 +7,7 @@
           ">
           前一天
         </span>
-        <span class="mx-auto text-center cursor-pointer" @click="activeDay = dayjs().format('YYYY-MM-DD')">
+        <span class="mx-auto text-center cursor-pointer" @click="activeDay = now.format('YYYY-MM-DD')">
           待办
         </span>
         <span class="text-xs cursor-pointer" @click="
@@ -27,10 +27,10 @@
               <template v-if="item.notification">
                 <span v-if="item.notificationCompleted" class="block w-2 h-2 mr-1 rounded-full bg-red-600"></span>
                 <template v-else>
-                  <span v-if="dayjs().isAfter(dayjs(item.notificationStartTime))"
-                    class="block w-2 h-2 mr-1 rounded-full bg-orange-400"></span>
-                  <span v-else="!item.notificationCompleted"
+                  <span v-if="now.isAfter(dayjs(item.notificationStartTime))"
                     class="block w-2 h-2 mr-1 rounded-full bg-green-600"></span>
+                  <span v-else
+                    class="block w-2 h-2 mr-1 rounded-full bg-orange-400"></span>
                 </template>
               </template>
               <span class="cursor-pointer underline" @click="deleteTodo(item)">删除</span>
@@ -60,7 +60,7 @@
         </a-form-item>
 
         <a-form-item v-if="todoForm.notificationCompleted" label="通知已完成" name="notificationCompleted">
-          <a-switch v-model:checked="todoForm.notificationCompleted" />
+          <a-switch :checked="todoForm.notificationCompleted" @update:checked="changeTodoFormCompleted" />
         </a-form-item>
 
         <template v-if="todoForm.notification">
@@ -102,11 +102,13 @@ import { computed, ref } from 'vue'
 import useAppStore from '@/_stores/app'
 import dayjs from 'dayjs'
 import { cloneDeep } from 'lodash'
+import { storeToRefs } from 'pinia'
 
 const appStore = useAppStore()
+const { now } = storeToRefs(appStore)
 const open = ref(false)
 const todoForm = ref({})
-const activeDay = ref(dayjs().format('YYYY-MM-DD'))
+const activeDay = ref(now.value.format('YYYY-MM-DD'))
 
 const baseTody = function () {
   return {
@@ -117,7 +119,7 @@ const baseTody = function () {
     notification: false,
     notificationStartTime: '',
     notificationLastNotifyTime: '', // 上一次通知的时间
-    notificationRepeatCount: 0,
+    notificationRepeatCount: 1,
     notificationSuccessCount: 0, // 已通知次数
     notificationRepeatTime: 5,
     notificationRepeatTimebase: 1000 * 60, // 分
@@ -134,6 +136,11 @@ const changeTodoFormNotification = (newStatus) => {
     todoForm.value.notificationStartTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
   }
   todoForm.value.notification = newStatus
+}
+
+const changeTodoFormCompleted = (newStatus) => {
+  todoForm.value.notificationCompleted = newStatus
+  todoForm.value.notificationLastNotifyTime = ''
 }
 
 const editTodo = (v) => {
@@ -157,7 +164,6 @@ const saveTodo = () => {
   }
   appStore.todos[activeDay.value] = todoList
   open.value = false
-  // appStore.updateAlarm(todoData)
 }
 
 const deleteTodo = (v) => {
