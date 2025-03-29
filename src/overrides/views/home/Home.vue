@@ -1,5 +1,6 @@
 <template>
-  <div class="pt-20">
+  <div class="pt-10">
+    <p class=" mb-10 text-6xl text-center">{{ now.format('HH:mm:ss') }}</p>
     <div class="w-2/3 mx-auto">
       <form
         class="flex gap-2 h-12"
@@ -12,6 +13,7 @@
           name="q"
           placeholder="搜索 Google"
           autofocus
+          autocomplete="off"
         />
       </form>
     </div>
@@ -34,7 +36,12 @@ import GoOffWork from '@/overrides/components/cmpCard/GoOffWork.vue'
 import Weather from '@/overrides/components/cmpCard/Weather.vue'
 import Todo from '@/overrides/components/cmpCard/Todo.vue'
 import AlarmTask from '@/overrides/components/cmpCard/AlarmTask.vue'
+import {storeToRefs } from 'pinia'
 
+import useAppStore from '@/_stores/app'
+const appStore = useAppStore()
+
+const { now } = storeToRefs(appStore)
 </script>
 
 <style scoped>
