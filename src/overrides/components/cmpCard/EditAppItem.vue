@@ -69,16 +69,16 @@ const getBaseForm = () => ({
   link: '',
   icon: '',
 })
-const form = reactive(getBaseForm())
+const form = ref(getBaseForm())
 
 async function onSave() {
-  form.icon = await getFavicon(form.link) || ''
-  homeAppList.value.push(form)
+  form.value.icon = await getFavicon(form.value.link) || ''
+  homeAppList.value.push(form.value)
   open.value = false
 }
 
 function onAddItem() {
+  form.value = getBaseForm()
   open.value = true
-  Object.assign(form, getBaseForm())
 }
 </script>

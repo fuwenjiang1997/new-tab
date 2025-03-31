@@ -44,29 +44,32 @@ export async function getFavicon(url) {
     const text = await response.text()
     const parser = new DOMParser()
     const doc = parser.parseFromString(text, 'text/html')
-    const faviconLink =
+
+    const faviconLinkEl =
       doc.querySelector('link[rel="icon"]') ||
       doc.querySelector('link[rel="shortcut icon"]')
-    if (faviconLink) {
-      const faviconUrl = faviconLink.href
-      const finalFaviconUrl = new URL(faviconUrl, url).href
-      return finalFaviconUrl
+
+    let faviconLink
+    if (faviconLinkEl) {
+      faviconLink = faviconLinkEl.href
     } else {
       const { origin } = new URL(url)
-      const res = await fetch(`${origin}/favicon.ico`)
-      if (res.ok) {
-        return new Promise(async (resolve) => {
-          const blob = await res.blob();
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            const base64data = reader.result;
-            resolve(base64data)
-          };
-          reader.readAsDataURL(blob);
-        })
-      }
-      return null
+      faviconLink = `${origin}/favicon.ico`
     }
+
+    const res = await fetch(faviconLink)
+    if (res.ok) {
+      return new Promise(async (resolve) => {
+        const blob = await res.blob()
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          const base64data = reader.result
+          resolve(base64data)
+        }
+        reader.readAsDataURL(blob)
+      })
+    }
+    return null
   } catch (error) {
     console.error('Error fetching the favicon:', error)
     return null
