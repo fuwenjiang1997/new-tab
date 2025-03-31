@@ -62,7 +62,7 @@
 
         <template v-if="form.notification">
           <a-form-item label="开始通知时间" name="notificationStartTime" :rules="[{ required: true }]">
-            <a-time-picker v-model:value="form.notificationStartTime" format="HH:mm"
+            <a-time-picker :value="form.notificationStartTime" @update:value="changeNotificationStartTime" format="HH:mm"
               valueFormat="YYYY-MM-DD HH:mm:ss" />
           </a-form-item>
 
@@ -133,10 +133,15 @@ const weekOptions = [
 const changeFormNotification = (newStatus) => {
   if (newStatus && !form.value.notificationStartTime) {
     const _now = dayjs()
-    form.value.notificationStartTime = _now.format('YYYY-MM-DD HH:mm:ss')
-    form.value.notificationStartTimeHMS = _now.format('HH:mm:ss')
+    changeNotificationStartTime(_now)
+    changeNotificationStartTime(now.value)
   }
   form.value.notification = newStatus
+}
+
+function changeNotificationStartTime(v) {
+  form.value.notificationStartTime = dayjs(v).format('YYYY-MM-DD HH:mm:ss')
+  form.value.notificationStartTimeHMS = dayjs(v).format('HH:mm:ss')
 }
 
 function editTask(v) {
