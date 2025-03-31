@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-10">
+  <div class="pt-10 h-screen overflow-y-scroll no-scrollbar">
     <p class=" mb-10 text-6xl text-center">{{ now.format('HH:mm:ss') }}</p>
     <div class="w-2/3 mx-auto">
       <form
@@ -23,7 +23,20 @@
         <AlarmTask></AlarmTask>
         <GoOffWork></GoOffWork>
         <!-- <Weather></Weather> -->
-        <MyIconCard v-for="(item, index) in 10" :key="index" class="icon-size-1x1 bg-red-100" title="测试icon">111</MyIconCard>
+
+        <MyIconCard
+          v-for="(item, index) in homeAppList"
+          :key="index"
+          class="icon-size-1x1"
+          :title="item.name"
+        >
+          <a :href="item.link" class="app-item-icon !flex flex-center p-2 bg-white text-black">
+            <img v-if="item.icon" :src="item.icon" class="w-full h-full" />
+            <IconLink v-else class="w-full h-full"></IconLink>
+          </a>
+        </MyIconCard>
+
+        <EditAppItem></EditAppItem>
       </div>
       <div class="fixed-box shrink-0 ">
         <Todo></Todo>
@@ -36,12 +49,15 @@ import GoOffWork from '@/overrides/components/cmpCard/GoOffWork.vue'
 import Weather from '@/overrides/components/cmpCard/Weather.vue'
 import Todo from '@/overrides/components/cmpCard/Todo.vue'
 import AlarmTask from '@/overrides/components/cmpCard/AlarmTask.vue'
+import EditAppItem from '@/overrides/components/cmpCard/EditAppItem.vue'
+import IconLink from '@/_components/icons/IconLink.vue'
 import {storeToRefs } from 'pinia'
 
 import useAppStore from '@/_stores/app'
 const appStore = useAppStore()
 
-const { now } = storeToRefs(appStore)
+const { now, homeAppList } = storeToRefs(appStore)
+
 </script>
 
 <style scoped>

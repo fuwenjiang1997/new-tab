@@ -21,7 +21,8 @@
           <div class="flex gap-2 pt-2 px-4" v-for="item in dayTodos">
             <a-checkbox v-model:checked="item.completed"></a-checkbox>
             <p class="flex-1" @click="editTodo(item)">
-              <span class="text-white">{{ item.name }}</span>
+              <span v-if="!item.completed">{{ item.name }}</span>
+              <del v-else>{{ item.name }}</del>
             </p>
             <div class="flex-center text-xs">
               <template v-if="item.notification">

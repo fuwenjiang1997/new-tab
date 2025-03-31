@@ -10,6 +10,7 @@ export default defineStore('app', () => {
   const bookmarks = useStorage('bookmarks', {})
   const todos = useStorage('todos', {})
   const alarmTasks = useStorage('alarmTasks', [])
+  const homeAppList = useStorage('homeAppList', [])
   const now = ref(dayjs())
   const nowDay = computed(() => now.value.format('YYYY-MM-DD'))
   const nowDayTodos = computed(() => {
@@ -144,6 +145,7 @@ export default defineStore('app', () => {
     todos,
     now,
     nowDay,
-    alarmTasks
+    alarmTasks,
+    homeAppList
   }
 })

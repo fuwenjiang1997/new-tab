@@ -27,7 +27,7 @@
     @apply relative;
   }
   .app-item-icon {
-    @apply w-full h-full rounded-2xl overflow-hidden shadow-2xl
+    @apply block w-full h-full rounded-2xl overflow-hidden shadow-2xl
   }
   .icon-size-1x1 {
     width: var(--icon-size);
