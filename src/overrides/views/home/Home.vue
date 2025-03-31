@@ -34,7 +34,7 @@
           :id="item.id"
         >
           <a :href="item.link" class="app-item-icon !flex flex-center p-2 bg-white text-black">
-            <img v-if="item.icon" :src="item.icon" class="w-full h-full object-contain" />
+            <img v-if="item.icon" :src="item.icon" class="w-10 h-10 object-contain" />
             <IconLink v-else class="w-full h-full"></IconLink>
           </a>
         </MyIconCard>

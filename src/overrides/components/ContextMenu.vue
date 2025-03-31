@@ -22,7 +22,7 @@
 
       <div class="mb-3 flex items-center">
         <EditOutlined class="mr-2 text-sm" />
-        <span class="flex-1 cursor-pointer hover:underline">编辑</span>
+        <span class="flex-1 cursor-pointer hover:underline" @click="editAppItemRef.show(app)">编辑</span>
       </div>
 
       <div class="mb-3 flex items-center">
@@ -33,21 +33,25 @@
 
 
     <div class="flex items-center">
-      <i-hugeicons-image-01 class="mr-2 text-sm" />
-      <span class="flex-1 cursor-pointer hover:underline" @click="deleteApp">更换背景</span>
+      <i-hugeicons-image-01 class="mr-2 w-[14px] h-[14px]" />
+      <span class="flex-1 cursor-pointer hover:underline" @click="">更换背景</span>
     </div>
   </div>
+
+  <EditAppItemDialog ref="editAppItemRef" />
 </template>
 <script setup>
 import { LayoutOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons-vue'
 import { computed, ref } from 'vue';
 import useAppStore from '@/_stores/app'
 import { storeToRefs } from 'pinia'
+import EditAppItemDialog from './EditAppItemDialog.vue'
 
 const appStore = useAppStore()
 const { homeAppMap, homeAppList } = storeToRefs(appStore)
 const isApp = ref(false)
 const appId = ref()
+const editAppItemRef = ref()
 const app = computed(() => homeAppMap.value[appId.value])
 
 function deleteApp() {

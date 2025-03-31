@@ -13,19 +13,19 @@
     "file": "assets/dayjs.min-QtCe8tbb.js",
     "name": "dayjs.min"
   },
-  "_index-CyOubfLp.js": {
-    "file": "assets/index-CyOubfLp.js",
+  "_index-CK9h0N1H.js": {
+    "file": "assets/index-CK9h0N1H.js",
     "name": "index",
     "imports": [
       "__plugin-vue_export-helper-DYp3nmNF.js"
     ],
     "css": [
-      "assets/index-F4wZfYVi.css"
+      "assets/index-a1u4nHUN.css"
     ]
   },
-  "_index-F4wZfYVi.css": {
-    "file": "assets/index-F4wZfYVi.css",
-    "src": "_index-F4wZfYVi.css"
+  "_index-a1u4nHUN.css": {
+    "file": "assets/index-a1u4nHUN.css",
+    "src": "_index-a1u4nHUN.css"
   },
   "src/background/index.js": {
     "file": "assets/index.js-BGx5Ql9p.js",
@@ -50,30 +50,30 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-YGHNpRzb.js",
+    "file": "assets/overrides-BvObb6K2.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
       "__plugin-vue_export-helper-DYp3nmNF.js",
-      "_index-CyOubfLp.js",
+      "_index-CK9h0N1H.js",
       "_dayjs.min-QtCe8tbb.js"
     ],
     "css": [
-      "assets/overrides-HF4EnL6H.css"
+      "assets/overrides-dKvsiPCg.css"
     ],
     "assets": [
       "assets/bg-wEh6Y2Up.jpeg"
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-CuvfloPs.js",
+    "file": "assets/popup-Crn42z2b.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
       "__plugin-vue_export-helper-DYp3nmNF.js",
-      "_index-CyOubfLp.js"
+      "_index-CK9h0N1H.js"
     ]
   }
 }
