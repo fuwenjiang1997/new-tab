@@ -15,9 +15,9 @@
               <template v-if="item.notification">
                 <span v-if="item.notificationCompleted" class="block w-2 h-2 mr-1 rounded-full bg-red-600"></span>
                 <template v-else>
-                  <span v-if="!item.weeks[dayjs().day()]"
+                  <span v-if="!item.weeks[now.day()]"
                     class="block w-2 h-2 mr-1 rounded-full bg-blue-50"></span>
-                  <span v-else-if="dayjs().isAfter(dayjs(item.notificationStartTime))"
+                  <span v-else-if="now.isAfter(dayjs(item.notificationStartTimeHMS))"
                     class="block w-2 h-2 mr-1 rounded-full bg-green-600"></span>
                   <span v-else
                     class="block w-2 h-2 mr-1 rounded-full bg-orange-400"></span>
@@ -91,14 +91,14 @@
 
 </template>
 <script setup>
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import useAppStore from '@/_stores/app'
 import dayjs from 'dayjs'
 import { storeToRefs } from 'pinia'
 import { cloneDeep } from 'lodash'
 
 const appStore = useAppStore()
-const { alarmTasks } = storeToRefs(appStore)
+const { now, alarmTasks } = storeToRefs(appStore)
 const form = ref({})
 const open = ref(false)
 
@@ -110,6 +110,7 @@ const baseTask = function () {
     index: 0,
     notification: false,
     notificationStartTime: '',
+    notificationStartTimeHMS:'',
     notificationLastNotifyTime: '', // 上一次通知的时间
     notificationRepeatCount: 0,
     notificationSuccessCount: 0, // 已通知次数
@@ -131,7 +132,9 @@ const weekOptions = [
 
 const changeFormNotification = (newStatus) => {
   if (newStatus && !form.value.notificationStartTime) {
-    form.value.notificationStartTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
+    const _now = dayjs()
+    form.value.notificationStartTime = _now.format('YYYY-MM-DD HH:mm:ss')
+    form.value.notificationStartTimeHMS = _now.format('HH:mm:ss')
   }
   form.value.notification = newStatus
 }

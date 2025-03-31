@@ -1,6 +1,6 @@
 import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
-import { onBeforeMount, onMounted, computed, ref } from 'vue'
+import { onBeforeMount, onMounted, computed, ref, watch } from 'vue'
 import dayjs from 'dayjs'
 import { chromeNotification, generateRandomString } from '@/_utils/util'
 import { NOTIFICATION_JUST_MESSAGE, NOTIFICATION_ALARM, NOTIFICATION_TODO } from '@/_utils/const'
@@ -17,9 +17,16 @@ export default defineStore('app', () => {
     return todos.value[nowDay.value] || []
   })
 
-  const gHandlerMap = {
-    
-  }
+  const gHandlerMap = {}
+
+  // 新的一天
+  watch(nowDay, () => {
+    alarmTasks.value.forEach(task => {
+      task.notificationCompleted = false
+      task.notificationLastNotifyTime = ''
+      task.notificationSuccessCount = 0
+    })
+  })
 
   function checkItemIsNotifify(params, _now = dayjs()) {
     const {
@@ -28,9 +35,9 @@ export default defineStore('app', () => {
       notificationLastNotifyTime,
       notification,
       notificationStartTime,
+      notificationStartTimeHMS,
       notificationCompleted,
     } = params
-
     if (notificationCompleted || !notification || !notificationStartTime) {
       return false
     }
@@ -42,7 +49,7 @@ export default defineStore('app', () => {
             'millisecond'
           )
         )
-        : _now.isAfter(dayjs(notificationStartTime))
+        : _now.isAfter(dayjs(notificationStartTimeHMS || notificationStartTime))
   }
 
   // 执行通知检查
@@ -88,7 +95,6 @@ export default defineStore('app', () => {
         )
       }
     }
-
   }
 
   function notificationBtnEventHandler() {
@@ -98,8 +104,12 @@ export default defineStore('app', () => {
   
       },
       // 定时通知
-      [NOTIFICATION_ALARM]: (btnIndex, todoId, handlerName, ...args) => {
-        
+      [NOTIFICATION_ALARM]: (btnIndex, id, handlerName, ...args) => {
+        if (btnIndex === 0) {
+          // 关闭通知
+          const task = alarmTasks.value.find(task => task.id == id)
+          task.notificationCompleted = true
+        }
       },
        // todo通知
       [NOTIFICATION_TODO]: (btnIndex, todoId, handlerName, ...args) => {

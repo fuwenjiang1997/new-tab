@@ -20,11 +20,10 @@ import duration from 'dayjs/plugin/duration'
 dayjs.extend(duration)
 
 const appStore = useAppStore()
-
 const { now } = storeToRefs(appStore)
 
 const diffGoOffWorkTime = computed(() => {
-  const todayGoOffWorkTime = dayjs().hour(23).minute(50).second(0)
+  const todayGoOffWorkTime = dayjs().hour(18).minute(30).second(0)
   if (now.value.isBefore(todayGoOffWorkTime)) {
     const duration = dayjs.duration(todayGoOffWorkTime.diff(now.value));
     return duration.format('HH:mm:ss')

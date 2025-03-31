@@ -1,0 +1,71 @@
+{
+  "../../../../../../@crx/manifest": {
+    "file": "assets/crx-manifest.js-CMfJq-4S.js",
+    "name": "crx-manifest.js",
+    "src": "../../../../../../@crx/manifest",
+    "isEntry": true
+  },
+  "__plugin-vue_export-helper-DgF174cf.js": {
+    "file": "assets/_plugin-vue_export-helper-DgF174cf.js",
+    "name": "_plugin-vue_export-helper"
+  },
+  "_index-BQ7RPQcl.js": {
+    "file": "assets/index-BQ7RPQcl.js",
+    "name": "index",
+    "imports": [
+      "__plugin-vue_export-helper-DgF174cf.js"
+    ],
+    "css": [
+      "assets/index-zjc-msGR.css"
+    ]
+  },
+  "_index-zjc-msGR.css": {
+    "file": "assets/index-zjc-msGR.css",
+    "src": "_index-zjc-msGR.css"
+  },
+  "src/background/index.js": {
+    "file": "assets/index.js-DenvuW_S.js",
+    "name": "index.js",
+    "src": "src/background/index.js",
+    "isEntry": true
+  },
+  "src/offscreen/index.html": {
+    "file": "assets/offscreen-DEH6Zf5O.js",
+    "name": "offscreen",
+    "src": "src/offscreen/index.html",
+    "isEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DgF174cf.js"
+    ]
+  },
+  "src/overrides/assets/bg.jpeg": {
+    "file": "assets/bg-wEh6Y2Up.jpeg",
+    "src": "src/overrides/assets/bg.jpeg"
+  },
+  "src/overrides/index.html": {
+    "file": "assets/overrides-BAOELh0t.js",
+    "name": "overrides",
+    "src": "src/overrides/index.html",
+    "isEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DgF174cf.js",
+      "_index-BQ7RPQcl.js"
+    ],
+    "css": [
+      "assets/overrides-DIqM13dk.css"
+    ],
+    "assets": [
+      "assets/bg-wEh6Y2Up.jpeg"
+    ]
+  },
+  "src/popup/index.html": {
+    "file": "assets/popup-C8bwxYVr.js",
+    "name": "popup",
+    "src": "src/popup/index.html",
+    "isEntry": true,
+    "imports": [
+      "__plugin-vue_export-helper-DgF174cf.js",
+      "_index-BQ7RPQcl.js"
+    ]
+  }
+}
