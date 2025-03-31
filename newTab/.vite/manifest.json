@@ -1,6 +1,6 @@
 {
   "../../../../../../@crx/manifest": {
-    "file": "assets/crx-manifest.js-CMfJq-4S.js",
+    "file": "assets/crx-manifest.js-B2lYN7LV.js",
     "name": "crx-manifest.js",
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
@@ -9,19 +9,19 @@
     "file": "assets/_plugin-vue_export-helper-DgF174cf.js",
     "name": "_plugin-vue_export-helper"
   },
-  "_index-BQ7RPQcl.js": {
-    "file": "assets/index-BQ7RPQcl.js",
+  "_index-DzmnF7fh.css": {
+    "file": "assets/index-DzmnF7fh.css",
+    "src": "_index-DzmnF7fh.css"
+  },
+  "_index-gokfOMzX.js": {
+    "file": "assets/index-gokfOMzX.js",
     "name": "index",
     "imports": [
       "__plugin-vue_export-helper-DgF174cf.js"
     ],
     "css": [
-      "assets/index-zjc-msGR.css"
+      "assets/index-DzmnF7fh.css"
     ]
-  },
-  "_index-zjc-msGR.css": {
-    "file": "assets/index-zjc-msGR.css",
-    "src": "_index-zjc-msGR.css"
   },
   "src/background/index.js": {
     "file": "assets/index.js-DenvuW_S.js",
@@ -43,13 +43,13 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-BAOELh0t.js",
+    "file": "assets/overrides-D3JxsOcq.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
       "__plugin-vue_export-helper-DgF174cf.js",
-      "_index-BQ7RPQcl.js"
+      "_index-gokfOMzX.js"
     ],
     "css": [
       "assets/overrides-DIqM13dk.css"
@@ -59,13 +59,13 @@
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-C8bwxYVr.js",
+    "file": "assets/popup-BdQ3cl7I.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
       "__plugin-vue_export-helper-DgF174cf.js",
-      "_index-BQ7RPQcl.js"
+      "_index-gokfOMzX.js"
     ]
   }
 }

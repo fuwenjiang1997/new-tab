@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "format": "prettier --write src/",
-    "dev:chrome": "vite -c vite.chrome.config.js",
+    "dev:chrome": "vite -m development -c vite.chrome.config.js",
     "build:chrome": "vite build -c vite.chrome.config.js"
   },
   "author": "",

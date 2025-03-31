@@ -1,8 +1,8 @@
 export default {
   manifest_version: 3,
   version: "1.0.0",
-  "name": "CRX",
-  "description": "Chrome extension template",
+  "name": "New Tab",
+  "description": "Chrome New Tab",
   "action": {
     "default_popup": "src/popup/index.html"
   },

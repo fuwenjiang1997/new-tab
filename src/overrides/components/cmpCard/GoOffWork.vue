@@ -2,7 +2,7 @@
   <MyIconCard class="icon-size-4x2" title="下班倒计时">
     <div class="app-item-icon py-2 px-3 bg-white text-neutral-700">
       <div>
-        <p class="text-neutral-500">下班还有</p>
+        <p class="text-neutral-500">下班还有<span class="text-xs">【今日事今日毕】</span></p>
         <p class=" text-3xl font-semibold">{{ diffGoOffWorkTime }}</p>
       </div>
       <div class="">
