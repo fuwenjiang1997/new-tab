@@ -52,12 +52,14 @@
     </div>
 
     <AddMenuDialog v-model:visiable="addMenuVisiable"></AddMenuDialog>
+    <ContextMenu></ContextMenu>
   </div>
 </template>
 <script setup>
 import { ref, computed } from 'vue'
 import useAppStore from '@/_stores/app'
 import AddMenuDialog from './components/AddMenuDialog.vue'
+import ContextMenu from './components/ContextMenu.vue'
 import {
   HomeOutlined,
   PlusOutlined,

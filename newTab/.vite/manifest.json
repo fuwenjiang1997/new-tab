@@ -5,23 +5,23 @@
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
   },
-  "__plugin-vue_export-helper-DgF174cf.js": {
-    "file": "assets/_plugin-vue_export-helper-DgF174cf.js",
+  "__plugin-vue_export-helper-DYp3nmNF.js": {
+    "file": "assets/_plugin-vue_export-helper-DYp3nmNF.js",
     "name": "_plugin-vue_export-helper"
   },
-  "_index-DzmnF7fh.css": {
-    "file": "assets/index-DzmnF7fh.css",
-    "src": "_index-DzmnF7fh.css"
-  },
-  "_index-gokfOMzX.js": {
-    "file": "assets/index-gokfOMzX.js",
+  "_index-CyOubfLp.js": {
+    "file": "assets/index-CyOubfLp.js",
     "name": "index",
     "imports": [
-      "__plugin-vue_export-helper-DgF174cf.js"
+      "__plugin-vue_export-helper-DYp3nmNF.js"
     ],
     "css": [
-      "assets/index-DzmnF7fh.css"
+      "assets/index-F4wZfYVi.css"
     ]
+  },
+  "_index-F4wZfYVi.css": {
+    "file": "assets/index-F4wZfYVi.css",
+    "src": "_index-F4wZfYVi.css"
   },
   "src/background/index.js": {
     "file": "assets/index.js-DenvuW_S.js",
@@ -30,12 +30,12 @@
     "isEntry": true
   },
   "src/offscreen/index.html": {
-    "file": "assets/offscreen-DEH6Zf5O.js",
+    "file": "assets/offscreen-Dl65etkL.js",
     "name": "offscreen",
     "src": "src/offscreen/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DgF174cf.js"
+      "__plugin-vue_export-helper-DYp3nmNF.js"
     ]
   },
   "src/overrides/assets/bg.jpeg": {
@@ -43,29 +43,29 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-D3JxsOcq.js",
+    "file": "assets/overrides-DJtWWTED.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DgF174cf.js",
-      "_index-gokfOMzX.js"
+      "__plugin-vue_export-helper-DYp3nmNF.js",
+      "_index-CyOubfLp.js"
     ],
     "css": [
-      "assets/overrides-DIqM13dk.css"
+      "assets/overrides-HF4EnL6H.css"
     ],
     "assets": [
       "assets/bg-wEh6Y2Up.jpeg"
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-BdQ3cl7I.js",
+    "file": "assets/popup-CuvfloPs.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DgF174cf.js",
-      "_index-gokfOMzX.js"
+      "__plugin-vue_export-helper-DYp3nmNF.js",
+      "_index-CyOubfLp.js"
     ]
   }
 }

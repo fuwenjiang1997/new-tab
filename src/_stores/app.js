@@ -16,6 +16,13 @@ export default defineStore('app', () => {
   const nowDayTodos = computed(() => {
     return todos.value[nowDay.value] || []
   })
+  const homeAppMap = computed(() => {
+    const map = {}
+    homeAppList.value.forEach(item => {
+      map[item.id] = item
+    })
+    return map
+  })
 
   const gHandlerMap = {}
 
@@ -156,6 +163,7 @@ export default defineStore('app', () => {
     now,
     nowDay,
     alarmTasks,
-    homeAppList
+    homeAppList,
+    homeAppMap
   }
 })

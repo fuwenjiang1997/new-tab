@@ -25,31 +25,7 @@
     </div>
   </a-modal>
 
-  <!-- <div id="contextmenuModal" class="">
-    <a-row>
-      <a-col flex="100px">icon</a-col>
-      <a-col flex="auto">在新标签页打开</a-col>
-    </a-row>
-    <a-row>
-      <a-col flex="100px">布局</a-col>
-      <a-col flex="auto">
-        <a-row :gutter="24">
-          <a-col class="gutter-row" :span="5">
-            <div class="gutter-box">col-6</div>
-          </a-col>
-          <a-col class="gutter-row" :span="5">
-            <div class="gutter-box">col-6</div>
-          </a-col>
-          <a-col class="gutter-row" :span="5">
-            <div class="gutter-box">col-6</div>
-          </a-col>
-          <a-col class="gutter-row" :span="5">
-            <div class="gutter-box">col-6</div>
-          </a-col>
-        </a-row>
-      </a-col>
-    </a-row>
-  </div> -->
+  
 </template>
 <script setup>
 import { ref, reactive } from 'vue'

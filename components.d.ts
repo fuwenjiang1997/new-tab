@@ -23,6 +23,8 @@ declare module 'vue' {
     ATimePicker: typeof import('ant-design-vue/es')['TimePicker']
     Button: typeof import('./src/_components/Button.vue')['default']
     IconLink: typeof import('./src/_components/icons/IconLink.vue')['default']
+    IHugeiconsImage01: typeof import('~icons/hugeicons/image01')['default']
+    ITablerLocationShare: typeof import('~icons/tabler/location-share')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

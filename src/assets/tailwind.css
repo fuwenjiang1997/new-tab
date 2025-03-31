@@ -33,6 +33,14 @@
     width: var(--icon-size);
     height: var(--icon-size);
   }
+  .icon-size-1x2 {
+    width: var(--icon-size);
+    height: calc(var(--icon-size) * 2 + var(--icon-gap-y));
+  }
+  .icon-size-2x1 {
+    width: calc(var(--icon-size) * 2 + var(--icon-gap-x));
+    height: var(--icon-size);
+  }
   .icon-size-2x2 {
     width: calc(var(--icon-size) * 2 + var(--icon-gap-x));
     height: calc(var(--icon-size) * 2 + var(--icon-gap-y));

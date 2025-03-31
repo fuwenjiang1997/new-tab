@@ -27,11 +27,14 @@
         <MyIconCard
           v-for="(item, index) in homeAppList"
           :key="index"
-          class="icon-size-1x1"
+          :class="{
+            [`icon-size-${item.size || '1x1'}`]: true
+          }"
           :title="item.name"
+          :id="item.id"
         >
           <a :href="item.link" class="app-item-icon !flex flex-center p-2 bg-white text-black">
-            <img v-if="item.icon" :src="item.icon" class="w-full h-full" />
+            <img v-if="item.icon" :src="item.icon" class="w-full h-full object-contain" />
             <IconLink v-else class="w-full h-full"></IconLink>
           </a>
         </MyIconCard>

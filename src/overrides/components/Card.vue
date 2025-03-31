@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative transition-all" app-icon>
     <slot />
     <p
       v-if="title"
