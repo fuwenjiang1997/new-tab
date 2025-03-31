@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 export function generateRandomString(length) {
   const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let result = ''
@@ -74,4 +76,9 @@ export async function getFavicon(url) {
     console.error('Error fetching the favicon:', error)
     return null
   }
+}
+
+export function getTodayDayjs(hms) {
+  const _nowDay = dayjs().format('YYYY-MM-DD')
+  return dayjs(`${_nowDay} ${hms}`)
 }

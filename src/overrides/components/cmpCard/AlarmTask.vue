@@ -15,12 +15,10 @@
               <template v-if="item.notification">
                 <span v-if="item.notificationCompleted" class="block w-2 h-2 mr-1 rounded-full bg-red-600"></span>
                 <template v-else>
-                  <span v-if="!item.weeks[now.day()]"
-                    class="block w-2 h-2 mr-1 rounded-full bg-blue-50"></span>
-                  <span v-else-if="now.isAfter(dayjs(item.notificationStartTimeHMS))"
+                  <span v-if="!item.weeks[now.day()]" class="block w-2 h-2 mr-1 rounded-full bg-blue-50"></span>
+                  <span v-else-if="now.isAfter(getTodayDayjs(item.notificationStartTimeHMS))"
                     class="block w-2 h-2 mr-1 rounded-full bg-green-600"></span>
-                  <span v-else
-                    class="block w-2 h-2 mr-1 rounded-full bg-orange-400"></span>
+                  <span v-else class="block w-2 h-2 mr-1 rounded-full bg-orange-400"></span>
                 </template>
               </template>
               <span class="cursor-pointer underline" @click="deleteTask(item)">删除</span>
@@ -62,8 +60,8 @@
 
         <template v-if="form.notification">
           <a-form-item label="开始通知时间" name="notificationStartTime" :rules="[{ required: true }]">
-            <a-time-picker :value="form.notificationStartTime" @update:value="changeNotificationStartTime" format="HH:mm"
-              valueFormat="YYYY-MM-DD HH:mm:ss" />
+            <a-time-picker :value="form.notificationStartTime" @update:value="changeNotificationStartTime"
+              format="HH:mm" valueFormat="YYYY-MM-DD HH:mm:ss" />
           </a-form-item>
 
           <a-form-item label="通知间隔" name="notificationRepeatTime">
@@ -96,6 +94,7 @@ import useAppStore from '@/_stores/app'
 import dayjs from 'dayjs'
 import { storeToRefs } from 'pinia'
 import { cloneDeep } from 'lodash'
+import { getTodayDayjs } from '@/_utils/util'
 
 const appStore = useAppStore()
 const { now, alarmTasks } = storeToRefs(appStore)
@@ -110,7 +109,7 @@ const baseTask = function () {
     index: 0,
     notification: false,
     notificationStartTime: '',
-    notificationStartTimeHMS:'',
+    notificationStartTimeHMS: '',
     notificationLastNotifyTime: '', // 上一次通知的时间
     notificationRepeatCount: 0,
     notificationSuccessCount: 0, // 已通知次数

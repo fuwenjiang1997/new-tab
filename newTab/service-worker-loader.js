@@ -1,1 +1,1 @@
-import './assets/index.js-DenvuW_S.js';
+import './assets/index.js-BGx5Ql9p.js';

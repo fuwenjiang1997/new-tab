@@ -2,7 +2,7 @@ import { useStorage } from '@vueuse/core'
 import { defineStore } from 'pinia'
 import { onBeforeMount, onMounted, computed, ref, watch } from 'vue'
 import dayjs from 'dayjs'
-import { chromeNotification, generateRandomString } from '@/_utils/util'
+import { chromeNotification, generateRandomString, getTodayDayjs } from '@/_utils/util'
 import { NOTIFICATION_JUST_MESSAGE, NOTIFICATION_ALARM, NOTIFICATION_TODO } from '@/_utils/const'
 
 export default defineStore('app', () => {
@@ -56,7 +56,7 @@ export default defineStore('app', () => {
             'millisecond'
           )
         )
-        : _now.isAfter(dayjs(notificationStartTimeHMS || notificationStartTime))
+        : _now.isAfter(notificationStartTimeHMS ? getTodayDayjs(notificationStartTimeHMS) : dayjs(notificationStartTime))
   }
 
   // 执行通知检查
@@ -87,7 +87,9 @@ export default defineStore('app', () => {
 
     for (let i = 0; i < alarmTasks.value.length; i++) {
       const alarmTask = alarmTasks.value[i]
+      const { notificationRepeatCount } = alarmTask
       const isNotifyWeekDay = alarmTask.weeks[_now.day()]
+      console.log(checkItemIsNotifify(alarmTask, _now));
       if (isNotifyWeekDay && checkItemIsNotifify(alarmTask, _now)) {
         chromeNotification(
           `${generateRandomString(10)}%_%${NOTIFICATION_ALARM}%_%${alarmTask.id}`,
@@ -100,6 +102,12 @@ export default defineStore('app', () => {
             ]
           }
         )
+
+        alarmTask.notificationSuccessCount += 1
+        alarmTask.notificationLastNotifyTime = _now.valueOf()
+        if (notificationRepeatCount >= 1 && alarmTask.notificationSuccessCount >= notificationRepeatCount) {
+          alarmTask.notificationCompleted = true
+        }
       }
     }
   }
@@ -142,6 +150,10 @@ export default defineStore('app', () => {
   let nowTimetimer
   let notifiCheckTimer
   onMounted(() => {
+    const a= dayjs()
+    const b = dayjs('2025-01-01 00:00:00')
+
+    console.log('a,b:>>', a.isAfter(b));
     nowTimetimer = setInterval(() => {
       now.value = dayjs()
     }, 1000)

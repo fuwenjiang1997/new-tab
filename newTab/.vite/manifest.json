@@ -9,6 +9,10 @@
     "file": "assets/_plugin-vue_export-helper-DYp3nmNF.js",
     "name": "_plugin-vue_export-helper"
   },
+  "_dayjs.min-QtCe8tbb.js": {
+    "file": "assets/dayjs.min-QtCe8tbb.js",
+    "name": "dayjs.min"
+  },
   "_index-CyOubfLp.js": {
     "file": "assets/index-CyOubfLp.js",
     "name": "index",
@@ -24,10 +28,13 @@
     "src": "_index-F4wZfYVi.css"
   },
   "src/background/index.js": {
-    "file": "assets/index.js-DenvuW_S.js",
+    "file": "assets/index.js-BGx5Ql9p.js",
     "name": "index.js",
     "src": "src/background/index.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_dayjs.min-QtCe8tbb.js"
+    ]
   },
   "src/offscreen/index.html": {
     "file": "assets/offscreen-Dl65etkL.js",
@@ -43,13 +50,14 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-1O0vNkhA.js",
+    "file": "assets/overrides-YGHNpRzb.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
       "__plugin-vue_export-helper-DYp3nmNF.js",
-      "_index-CyOubfLp.js"
+      "_index-CyOubfLp.js",
+      "_dayjs.min-QtCe8tbb.js"
     ],
     "css": [
       "assets/overrides-HF4EnL6H.css"
