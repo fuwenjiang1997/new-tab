@@ -21,6 +21,7 @@ declare module 'vue' {
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     ATimePicker: typeof import('ant-design-vue/es')['TimePicker']
+    AUpload: typeof import('ant-design-vue/es')['Upload']
     Button: typeof import('./src/_components/Button.vue')['default']
     IconLink: typeof import('./src/_components/icons/IconLink.vue')['default']
     IHugeiconsImage01: typeof import('~icons/hugeicons/image01')['default']

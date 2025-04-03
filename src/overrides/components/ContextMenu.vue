@@ -31,14 +31,14 @@
       </div>
     </template>
 
-
     <div class="flex items-center">
       <i-hugeicons-image-01 class="mr-2 w-[14px] h-[14px]" />
-      <span class="flex-1 cursor-pointer hover:underline" @click="">更换背景</span>
+      <span class="flex-1 cursor-pointer hover:underline" @click="bgImgSetDialogRef.show()">更换背景</span>
     </div>
   </div>
 
   <EditAppItemDialog ref="editAppItemRef" />
+  <BgImgSetDialog ref="bgImgSetDialogRef" />
 </template>
 <script setup>
 import { LayoutOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons-vue'
@@ -46,6 +46,7 @@ import { computed, ref } from 'vue';
 import useAppStore from '@/_stores/app'
 import { storeToRefs } from 'pinia'
 import EditAppItemDialog from './EditAppItemDialog.vue'
+import BgImgSetDialog from './BgImgSetDialog.vue';
 
 const appStore = useAppStore()
 const { homeAppMap, homeAppList } = storeToRefs(appStore)
@@ -53,6 +54,7 @@ const isApp = ref(false)
 const appId = ref()
 const editAppItemRef = ref()
 const app = computed(() => homeAppMap.value[appId.value])
+const bgImgSetDialogRef = ref()
 
 function deleteApp() {
   const index = homeAppList.value.findIndex(item => item.id === appId.value)
@@ -68,14 +70,11 @@ document.addEventListener('contextmenu', function (event) {
   contextmenu.style.top = event.clientY + 'px'
   contextmenu.style.left = event.clientX + 'px'
   contextmenu.style.display = 'block'
-  console.log('app:>', appId.value, homeAppMap.value, app.value);
 })
 document.addEventListener('click', function () {
   const contextmenu = document.getElementById('contextmenu')
   contextmenu.style.display = 'none'
 })
-
-
 </script>
 
 <style>

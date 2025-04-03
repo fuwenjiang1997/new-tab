@@ -59,23 +59,37 @@ export async function getFavicon(url) {
       faviconLink = `${origin}/favicon.ico`
     }
 
-    const res = await fetch(faviconLink)
-    if (res.ok) {
-      return new Promise(async (resolve) => {
-        const blob = await res.blob()
-        const reader = new FileReader()
-        reader.onloadend = () => {
-          const base64data = reader.result
-          resolve(base64data)
-        }
-        reader.readAsDataURL(blob)
-      })
-    }
-    return null
+    return fetchImgToBase64(faviconLink)
   } catch (error) {
     console.error('Error fetching the favicon:', error)
     return null
   }
+}
+
+export async function fetchImgToBase64(link) {
+  const res = await fetch(link)
+  if (res.ok) {
+    return new Promise(async (resolve) => {
+      const blob = await res.blob()
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64data = reader.result
+        resolve(base64data)
+      }
+      reader.readAsDataURL(blob)
+    })
+  }
+  return null
+}
+
+export function fileToBase64(file) {
+  return new Promise((resolve) => {
+    const reader = new FileReader()
+    reader.onloadend = () => {
+      resolve(reader.result)
+    }
+    reader.readAsDataURL(file)
+  })
 }
 
 export function getTodayDayjs(hms) {

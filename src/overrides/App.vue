@@ -1,5 +1,7 @@
 <template>
-  <div class="page-container">
+  <div class="page-container" :style="{
+    backgroundImage: config.bgImg && `url(${config.bgImg})`
+  }" >
     <div
       id="home-page"
       class="flex h-screen w-screen text-white text-base"
@@ -66,8 +68,10 @@ import {
   SettingOutlined,
 } from '@ant-design/icons-vue'
 import useMenuIcon from './hooks/useMenuIcon'
+import { storeToRefs } from 'pinia'
 
 const appStore = useAppStore()
+const { config } = storeToRefs(appStore)
 const { customMenuIcons } = useMenuIcon()
 const addMenuVisiable = ref(false)
 const renderMenus = computed(() => {
@@ -84,7 +88,10 @@ const renderMenus = computed(() => {
 
 <style scoped>
 .page-container {
-  background: url('./assets/bg.jpeg') no-repeat center/cover;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('./assets/bg.jpeg');
 }
 #home-page {
   backdrop-filter: blur(10px);
