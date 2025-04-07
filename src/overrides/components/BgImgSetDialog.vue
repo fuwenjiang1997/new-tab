@@ -13,11 +13,11 @@
         </a-button>
       </a-upload>
 
-      <a-button @click="config.bgImg = ''">恢复默认背景图</a-button>
+      <a-button @click="recoverBg">恢复默认背景图</a-button>
     </div>
 
     <div class="flex">
-      <img class="w-full h-80 object-cover" :src="bgImg || config.bgImg || defaultBgImg" alt="" />
+      <img class="w-full h-80 object-cover" :src="bgImg || defaultBgImg" alt="" />
     </div>
   </a-modal>
 </template>
@@ -32,23 +32,25 @@ const appStore = useAppStore()
 const { config } = storeToRefs(appStore)
 const open = ref(false)
 const bgImgList = ref([])
-const bgImg = ref('')
+const bgImg = ref(config.value.bgImg)
 
 async function handleUploadImg(v) {
   bgImg.value = await fileToBase64(v.file.originFileObj)
 }
 
 function onOk() {
-  if (bgImg.value) {
-    config.value.bgImg = bgImg.value
-  }
+  config.value.bgImg = bgImg.value
   open.value = false
 }
 function onCancel() {
   bgImg.value = ''
 }
 function show() {
+  bgImg.value = config.value.bgImg
   open.value = true
+}
+function recoverBg() {
+  bgImg.value = ''
 }
 
 defineExpose({
