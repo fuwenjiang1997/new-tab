@@ -5,27 +5,27 @@
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
   },
-  "__plugin-vue_export-helper-DYp3nmNF.js": {
-    "file": "assets/_plugin-vue_export-helper-DYp3nmNF.js",
+  "__plugin-vue_export-helper-Ns2OwaAE.js": {
+    "file": "assets/_plugin-vue_export-helper-Ns2OwaAE.js",
     "name": "_plugin-vue_export-helper"
   },
   "_dayjs.min-QtCe8tbb.js": {
     "file": "assets/dayjs.min-QtCe8tbb.js",
     "name": "dayjs.min"
   },
-  "_index-CK9h0N1H.js": {
-    "file": "assets/index-CK9h0N1H.js",
+  "_index-B0wajjhk.js": {
+    "file": "assets/index-B0wajjhk.js",
     "name": "index",
     "imports": [
-      "__plugin-vue_export-helper-DYp3nmNF.js"
+      "__plugin-vue_export-helper-Ns2OwaAE.js"
     ],
     "css": [
-      "assets/index-a1u4nHUN.css"
+      "assets/index-CQ8EVTp8.css"
     ]
   },
-  "_index-a1u4nHUN.css": {
-    "file": "assets/index-a1u4nHUN.css",
-    "src": "_index-a1u4nHUN.css"
+  "_index-CQ8EVTp8.css": {
+    "file": "assets/index-CQ8EVTp8.css",
+    "src": "_index-CQ8EVTp8.css"
   },
   "src/background/index.js": {
     "file": "assets/index.js-BGx5Ql9p.js",
@@ -37,12 +37,12 @@
     ]
   },
   "src/offscreen/index.html": {
-    "file": "assets/offscreen-Dl65etkL.js",
+    "file": "assets/offscreen-Bx7uLgNh.js",
     "name": "offscreen",
     "src": "src/offscreen/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DYp3nmNF.js"
+      "__plugin-vue_export-helper-Ns2OwaAE.js"
     ]
   },
   "src/overrides/assets/bg.jpeg": {
@@ -50,30 +50,30 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-BvObb6K2.js",
+    "file": "assets/overrides-CjSH0Aet.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DYp3nmNF.js",
-      "_index-CK9h0N1H.js",
+      "__plugin-vue_export-helper-Ns2OwaAE.js",
+      "_index-B0wajjhk.js",
       "_dayjs.min-QtCe8tbb.js"
     ],
     "css": [
-      "assets/overrides-dKvsiPCg.css"
+      "assets/overrides-DxrTa119.css"
     ],
     "assets": [
       "assets/bg-wEh6Y2Up.jpeg"
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-Crn42z2b.js",
+    "file": "assets/popup-C1Xzavxl.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DYp3nmNF.js",
-      "_index-CK9h0N1H.js"
+      "__plugin-vue_export-helper-Ns2OwaAE.js",
+      "_index-B0wajjhk.js"
     ]
   }
 }
