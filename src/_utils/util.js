@@ -67,19 +67,23 @@ export async function getFavicon(url) {
 }
 
 export async function fetchImgToBase64(link) {
-  const res = await fetch(link)
-  if (res.ok) {
-    return new Promise(async (resolve) => {
-      const blob = await res.blob()
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        const base64data = reader.result
-        resolve(base64data)
-      }
-      reader.readAsDataURL(blob)
-    })
+  try {
+    const res = await fetch(link)
+    if (res.ok) {
+      return new Promise(async (resolve) => {
+        const blob = await res.blob()
+        const reader = new FileReader()
+        reader.onloadend = () => {
+          const base64data = reader.result
+          resolve(base64data)
+        }
+        reader.readAsDataURL(blob)
+      })
+    }
+    return null
+  } catch (error) {
+    return null
   }
-  return null
 }
 
 export function fileToBase64(file) {
