@@ -32,7 +32,7 @@
           <img
             class="w-10 h-auto"
             :src="form.icon"
-          />
+          >
         </a-form-item>
         <a-form-item
           label="描述"
@@ -48,10 +48,10 @@
   </a-modal>
 </template>
 <script setup>
-import { ref } from 'vue'
 import useAppStore from '@/_stores/app'
-import { storeToRefs } from 'pinia'
 import { generateRandomString, getFavicon } from '@/_utils/util'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
 
 const getBaseForm = () => ({
   id: generateRandomString(10),

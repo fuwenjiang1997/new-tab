@@ -46,10 +46,10 @@
   </a-modal>
 </template>
 <script setup>
-import { ref } from 'vue'
-import useMenuIcon from '../hooks/useMenuIcon'
 import useAppStore from '@/_stores/app'
 import { generateRandomString } from '@/_utils/util'
+import { ref } from 'vue'
+import useMenuIcon from '../hooks/useMenuIcon'
 
 const appStore = useAppStore()
 const open = defineModel('visiable', { default: false })

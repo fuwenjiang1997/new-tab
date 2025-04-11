@@ -1,17 +1,17 @@
-import { useStorage } from '@vueuse/core'
-import { defineStore } from 'pinia'
-import { onBeforeMount, onMounted, computed, ref, watch } from 'vue'
-import dayjs from 'dayjs'
+import {
+  NOTIFICATION_ALARM,
+  NOTIFICATION_JUST_MESSAGE,
+  NOTIFICATION_TODO,
+} from '@/_utils/const'
 import {
   chromeNotification,
   generateRandomString,
   getTodayDayjs,
 } from '@/_utils/util'
-import {
-  NOTIFICATION_JUST_MESSAGE,
-  NOTIFICATION_ALARM,
-  NOTIFICATION_TODO,
-} from '@/_utils/const'
+import { useStorage } from '@vueuse/core'
+import dayjs from 'dayjs'
+import { defineStore } from 'pinia'
+import { computed, onBeforeMount, onMounted, ref, watch } from 'vue'
 
 export default defineStore('app', () => {
   const menus = useStorage('menus', [])
@@ -62,16 +62,16 @@ export default defineStore('app', () => {
 
     return notificationLastNotifyTime
       ? _now.isAfter(
-          dayjs(notificationLastNotifyTime).add(
-            notificationRepeatTime * notificationRepeatTimebase,
-            'millisecond'
-          )
+        dayjs(notificationLastNotifyTime).add(
+          notificationRepeatTime * notificationRepeatTimebase,
+          'millisecond'
         )
+      )
       : _now.isAfter(
-          notificationStartTimeHMS
-            ? getTodayDayjs(notificationStartTimeHMS)
-            : dayjs(notificationStartTime)
-        )
+        notificationStartTimeHMS
+          ? getTodayDayjs(notificationStartTimeHMS)
+          : dayjs(notificationStartTime)
+      )
   }
 
   // 执行通知检查
@@ -157,7 +157,7 @@ export default defineStore('app', () => {
     }
 
     chrome.notifications.onButtonClicked.addListener(
-      function (notificationId, buttonIndex) {
+      (notificationId, buttonIndex) => {
         const info = notificationId.split('%_%')
         eventHandler[info[1]]?.(buttonIndex, ...info.slice(2))
         // 关闭通知

@@ -53,27 +53,26 @@
       </aside>
 
       <main class="flex-1">
-        <router-view></router-view>
+        <router-view />
       </main>
     </div>
 
-    <AddMenuDialog v-model:visiable="addMenuVisiable"></AddMenuDialog>
-    <ContextMenu></ContextMenu>
+    <AddMenuDialog v-model:visiable="addMenuVisiable" />
+    <ContextMenu />
   </div>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
 import useAppStore from '@/_stores/app'
+import {
+  CodeOutlined,
+  HomeOutlined,
+  SettingOutlined,
+} from '@ant-design/icons-vue'
+import { storeToRefs } from 'pinia'
+import { computed, ref } from 'vue'
 import AddMenuDialog from './components/AddMenuDialog.vue'
 import ContextMenu from './components/ContextMenu.vue'
-import {
-  HomeOutlined,
-  PlusOutlined,
-  SettingOutlined,
-  CodeOutlined,
-} from '@ant-design/icons-vue'
 import useMenuIcon from './hooks/useMenuIcon'
-import { storeToRefs } from 'pinia'
 
 const appStore = useAppStore()
 const { config } = storeToRefs(appStore)

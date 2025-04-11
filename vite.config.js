@@ -1,22 +1,21 @@
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vueDevTools from "vite-plugin-vue-devtools";
-import { URL, fileURLToPath } from "node:url";
-import Pages from "vite-plugin-pages";
-import Components from "unplugin-vue-components/vite";
-import tailwindcss from "@tailwindcss/vite";
-import Icons from "unplugin-icons/vite";
-import IconsResolver from "unplugin-icons/resolver";
+import { fileURLToPath, URL } from 'node:url'
+import tailwindcss from '@tailwindcss/vite'
+import vue from '@vitejs/plugin-vue'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
+import Pages from 'vite-plugin-pages'
 
-import { AntDesignVueResolver } from "unplugin-vue-components/resolvers";
 
 export default defineConfig({
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
-      "~": fileURLToPath(new URL("./src", import.meta.url)),
-      src: fileURLToPath(new URL("./src", import.meta.url)),
-      "@assets": fileURLToPath(new URL("src/assets", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '~': fileURLToPath(new URL('./src', import.meta.url)),
+      src: fileURLToPath(new URL('./src', import.meta.url)),
+      '@assets': fileURLToPath(new URL('src/assets', import.meta.url)),
     },
   },
   server: {
@@ -29,13 +28,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        popup: "src/popup/index.html",
-        overrides: "src/overrides/index.html",
-        offscreen: "src/offscreen/index.html",
+        popup: 'src/popup/index.html',
+        overrides: 'src/overrides/index.html',
+        offscreen: 'src/offscreen/index.html',
       },
     },
   },
-  assetsInclude: ["src/assets/*/**"],
+  assetsInclude: ['src/assets/*/**'],
   legacy: {
     skipWebSocketTokenCheck: true,
   },
@@ -46,13 +45,13 @@ export default defineConfig({
     Pages({
       dirs: [
         {
-          dir: "src/popup/views",
-          baseRoute: "popup",
+          dir: 'src/popup/views',
+          baseRoute: 'popup',
         },
       ],
     }),
     Components({
-      dirs: ["src/_components"],
+      dirs: ['src/_components'],
       resolvers: [
         // auto import icons
         IconsResolver(),
@@ -63,8 +62,8 @@ export default defineConfig({
     }),
     Icons({
       autoInstall: true,
-      compiler: "vue3",
+      compiler: 'vue3',
       scale: 1.5,
     }),
   ],
-});
+})

@@ -6,15 +6,15 @@ import {
   CarryOutOutlined,
   ContactsOutlined,
   DashboardOutlined,
-  FundProjectionScreenOutlined,
   FolderAddOutlined,
+  FundProjectionScreenOutlined,
   GiftOutlined,
   InsertRowAboveOutlined,
   MergeCellsOutlined,
   ProfileOutlined,
   ScheduleOutlined,
-  UngroupOutlined,
   ToolOutlined,
+  UngroupOutlined,
 } from '@ant-design/icons-vue'
 
 export default function () {

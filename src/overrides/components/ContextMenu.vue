@@ -10,7 +10,7 @@
       >
         <i-tabler-location-share
           class="mr-2 w-[14px] h-[14px]"
-        ></i-tabler-location-share>
+        />
         <a
           target="_blank"
           :href="app.link"
@@ -22,7 +22,7 @@
 
       <div class="mb-3">
         <div class="flex items-center">
-          <LayoutOutlined class="mr-2 text-sm"></LayoutOutlined>
+          <LayoutOutlined class="mr-2 text-sm" />
           <span class="flex-1">布局</span>
         </div>
         <div class="mt-2 grid grid-cols-3 gap-2">
@@ -95,16 +95,16 @@
   <BgImgSetDialog ref="bgImgSetDialogRef" />
 </template>
 <script setup>
+import useAppStore from '@/_stores/app'
 import {
-  LayoutOutlined,
   DeleteOutlined,
   EditOutlined,
+  LayoutOutlined,
 } from '@ant-design/icons-vue'
-import { computed, ref } from 'vue'
-import useAppStore from '@/_stores/app'
 import { storeToRefs } from 'pinia'
-import EditAppItemDialog from './EditAppItemDialog.vue'
+import { computed, ref } from 'vue'
 import BgImgSetDialog from './BgImgSetDialog.vue'
+import EditAppItemDialog from './EditAppItemDialog.vue'
 
 const appStore = useAppStore()
 const { homeAppMap, homeAppList } = storeToRefs(appStore)
@@ -119,17 +119,17 @@ function deleteApp() {
   homeAppList.value.splice(index, 1)
 }
 
-document.addEventListener('contextmenu', function (event) {
+document.addEventListener('contextmenu', (event) => {
   event.preventDefault()
   const appContainer = event.target.closest('div[app-icon]')
   appId.value = appContainer?.getAttribute('id')
   isApp.value = !!appContainer
   const contextmenu = document.getElementById('contextmenu')
-  contextmenu.style.top = event.clientY + 'px'
-  contextmenu.style.left = event.clientX + 'px'
+  contextmenu.style.top = `${event.clientY  }px`
+  contextmenu.style.left = `${event.clientX  }px`
   contextmenu.style.display = 'block'
 })
-document.addEventListener('click', function () {
+document.addEventListener('click', () => {
   const contextmenu = document.getElementById('contextmenu')
   contextmenu.style.display = 'none'
 })

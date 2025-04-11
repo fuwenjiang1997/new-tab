@@ -13,12 +13,14 @@
         @change="handleUploadImg"
       >
         <a-button>
-          <upload-outlined></upload-outlined>
+          <upload-outlined />
           Click to Upload
         </a-button>
       </a-upload>
 
-      <a-button @click="recoverBg">恢复默认背景图</a-button>
+      <a-button @click="recoverBg">
+        恢复默认背景图
+      </a-button>
     </div>
 
     <div class="flex">
@@ -26,16 +28,16 @@
         class="w-full h-80 object-cover"
         :src="bgImg || defaultBgImg"
         alt=""
-      />
+      >
     </div>
   </a-modal>
 </template>
 <script setup>
-import { ref, defineExpose } from 'vue'
 import useAppStore from '@/_stores/app'
-import { storeToRefs } from 'pinia'
-import defaultBgImg from '../assets/bg.jpeg'
 import { fileToBase64 } from '@/_utils/util'
+import { storeToRefs } from 'pinia'
+import { defineExpose, ref } from 'vue'
+import defaultBgImg from '../assets/bg.jpeg'
 
 const appStore = useAppStore()
 const { config } = storeToRefs(appStore)

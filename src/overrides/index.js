@@ -1,20 +1,23 @@
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+import { createRouter, createWebHashHistory } from 'vue-router/auto'
 import routes from '~pages'
 import App from './App.vue'
-import { createRouter, createWebHashHistory } from 'vue-router/auto'
-import { createPinia } from 'pinia'
-import '@/assets/index.css'
-import HomePage from './views/home/Home.vue'
-import SetPage from './views/set/Set.vue'
-import CustomPage from './views/custom/Custom.vue'
 import IconCard from './components/Card.vue'
+import CustomPage from './views/custom/Custom.vue'
+import HomePage from './views/home/Home.vue'
 import ScriptPage from './views/script/Script.vue'
+import SetPage from './views/set/Set.vue'
+import '@/assets/index.css'
 
 const _routes = [
   {
     path: '/',
-    // component: HomePage,
-    component: ScriptPage,
+    redirect: '/script',
+  },
+  {
+    path: '/home',
+    component: HomePage,
   },
   {
     path: '/set',

@@ -1,1 +1,1 @@
-import{_ as e,c,o as r,d as n}from"./_plugin-vue_export-helper-Ns2OwaAE.js";const t={};function o(s,p){return r(),c("div",null,"你好")}const a=e(t,[["render",o]]);n(a).use(router).use(createPinia()).mount("#app");
+import{c,_ as e,d as n,o as r}from'./_plugin-vue_export-helper-Ns2OwaAE.js';const t={};function o(s,p){return r(),c('div',null,'你好')}const a=e(t,[['render',o]]);n(a).use(router).use(createPinia()).mount('#app')

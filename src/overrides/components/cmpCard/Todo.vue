@@ -37,10 +37,10 @@
       >
         <div class="flex-1 overflow-y-scroll no-scrollbar">
           <div
-            class="flex gap-2 pt-2 px-4"
             v-for="item in dayTodos"
+            class="flex gap-2 pt-2 px-4"
           >
-            <a-checkbox v-model:checked="item.completed"></a-checkbox>
+            <a-checkbox v-model:checked="item.completed" />
             <p
               class="flex-1"
               @click="editTodo(item)"
@@ -53,16 +53,16 @@
                 <span
                   v-if="item.notificationCompleted"
                   class="block w-2 h-2 mr-1 rounded-full bg-red-600"
-                ></span>
+                />
                 <template v-else>
                   <span
                     v-if="now.isAfter(dayjs(item.notificationStartTime))"
                     class="block w-2 h-2 mr-1 rounded-full bg-green-600"
-                  ></span>
+                  />
                   <span
                     v-else
                     class="block w-2 h-2 mr-1 rounded-full bg-orange-400"
-                  ></span>
+                  />
                 </template>
               </template>
               <span
@@ -143,7 +143,7 @@
             <a-time-picker
               v-model:value="todoForm.notificationStartTime"
               format="HH:mm"
-              valueFormat="YYYY-MM-DD HH:mm:ss"
+              value-format="YYYY-MM-DD HH:mm:ss"
             />
           </a-form-item>
 
@@ -153,8 +153,8 @@
           >
             <div class="flex">
               <a-input-number
-                class="!w-[90px] mr-10"
                 v-model:value="todoForm.notificationRepeatTime"
+                class="!w-[90px] mr-10"
               >
                 <template #addonAfter>
                   <a-select
@@ -162,7 +162,9 @@
                     style="width: 60px"
                   >
                     <!-- <a-select-option :value="1000">秒</a-select-option> -->
-                    <a-select-option :value="60 * 1000">分</a-select-option>
+                    <a-select-option :value="60 * 1000">
+                      分
+                    </a-select-option>
                     <a-select-option :value="60 * 60 * 2000">
                       时
                     </a-select-option>
@@ -177,8 +179,8 @@
             name="notificationRepeatCount"
           >
             <a-input-number
-              class="!w-[200px]"
               v-model:value="todoForm.notificationRepeatCount"
+              class="!w-[200px]"
               placeholder="0或者空表示一直通知"
             />
           </a-form-item>
@@ -188,11 +190,11 @@
   </a-modal>
 </template>
 <script setup>
-import { computed, ref } from 'vue'
 import useAppStore from '@/_stores/app'
 import dayjs from 'dayjs'
 import { cloneDeep } from 'lodash'
 import { storeToRefs } from 'pinia'
+import { computed, ref } from 'vue'
 
 const appStore = useAppStore()
 const { now } = storeToRefs(appStore)

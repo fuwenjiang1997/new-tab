@@ -9,18 +9,20 @@
           下班还有
           <span class="text-xs">【今日事今日毕】</span>
         </p>
-        <p class="text-3xl font-semibold">{{ diffGoOffWorkTime }}</p>
+        <p class="text-3xl font-semibold">
+          {{ diffGoOffWorkTime }}
+        </p>
       </div>
-      <div class=""></div>
+      <div class="" />
     </div>
   </MyIconCard>
 </template>
 <script setup>
-import { computed, ref } from 'vue'
 import useAppStore from '@/_stores/app'
-import { storeToRefs } from 'pinia'
 import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration'
+import { storeToRefs } from 'pinia'
+import { computed, ref } from 'vue'
 dayjs.extend(duration)
 
 const appStore = useAppStore()
