@@ -18,6 +18,7 @@ declare module 'vue' {
     ASelect: typeof import('ant-design-vue/es')['Select']
     ASelectOption: typeof import('ant-design-vue/es')['SelectOption']
     ASwitch: typeof import('ant-design-vue/es')['Switch']
+    ATable: typeof import('ant-design-vue/es')['Table']
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     ATimePicker: typeof import('ant-design-vue/es')['TimePicker']

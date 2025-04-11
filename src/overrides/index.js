@@ -8,15 +8,21 @@ import HomePage from './views/home/Home.vue'
 import SetPage from './views/set/Set.vue'
 import CustomPage from './views/custom/Custom.vue'
 import IconCard from './components/Card.vue'
+import ScriptPage from './views/script/Script.vue'
 
 const _routes = [
   {
     path: '/',
-    component: HomePage,
+    // component: HomePage,
+    component: ScriptPage,
   },
   {
     path: '/set',
     component: SetPage,
+  },
+  {
+    path: '/script',
+    component: ScriptPage,
   },
   {
     path: '/custom-page/:pageName',

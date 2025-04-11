@@ -1,7 +1,10 @@
 <template>
-  <div class="page-container" :style="{
-    backgroundImage: config.bgImg && `url(${config.bgImg})`
-  }" >
+  <div
+    class="page-container"
+    :style="{
+      backgroundImage: config.bgImg && `url(${config.bgImg})`,
+    }"
+  >
     <div
       id="home-page"
       class="flex h-screen w-screen text-white text-base"
@@ -29,12 +32,13 @@
             </div>
             <p>{{ item.label }}</p>
           </router-link>
-          <div
+
+          <!-- <div
             class="flex justify-center py-5 cursor-pointer"
             @click="addMenuVisiable = true"
           >
             <PlusOutlined class="text-[30px]" />
-          </div>
+          </div> -->
         </div>
 
         <div class="justify-self-end">
@@ -66,6 +70,7 @@ import {
   HomeOutlined,
   PlusOutlined,
   SettingOutlined,
+  CodeOutlined,
 } from '@ant-design/icons-vue'
 import useMenuIcon from './hooks/useMenuIcon'
 import { storeToRefs } from 'pinia'
@@ -80,6 +85,11 @@ const renderMenus = computed(() => {
       label: '首页',
       path: '/',
       icon: HomeOutlined,
+    },
+    {
+      label: '脚本',
+      path: '/script',
+      icon: CodeOutlined,
     },
   ]
   return [...menus, ...appStore.menus]

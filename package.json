@@ -1,16 +1,29 @@
 {
   "name": "chrome-template",
-  "version": "1.0.0",
-  "main": "index.js",
   "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
   "scripts": {
     "format": "prettier --write src/",
+    "format2": "eslint . --fix",
     "dev:chrome": "vite -m development -c vite.chrome.config.js",
     "build:chrome": "vite build -c vite.chrome.config.js"
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "dependencies": {
+    "@ant-design/icons-vue": "^7.0.1",
+    "@vueuse/core": "^13.0.0",
+    "ant-design-vue": "^4.2.6",
+    "dayjs": "^1.11.13",
+    "i": "^0.3.7",
+    "lodash": "^4.17.21",
+    "npm": "^11.2.0",
+    "pinia": "^3.0.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^4.11.0",
     "@crxjs/vite-plugin": "^2.0.0-beta.32",
@@ -26,8 +39,9 @@
     "@vitejs/plugin-vue": "^5.2.3",
     "@vue/eslint-config-prettier": "^10.2.0",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9.23.0",
+    "eslint": "^9.24.0",
     "eslint-plugin-vue": "^10.0.0",
+    "globals": "^16.0.0",
     "postcss": "^8.5.3",
     "postcss-import": "^16.1.0",
     "prettier": "^3.5.3",
@@ -37,16 +51,5 @@
     "vite-plugin-pages": "^0.32.5",
     "vite-plugin-vue-devtools": "^7.7.2"
   },
-  "dependencies": {
-    "@ant-design/icons-vue": "^7.0.1",
-    "@vueuse/core": "^13.0.0",
-    "ant-design-vue": "^4.2.6",
-    "dayjs": "^1.11.13",
-    "i": "^0.3.7",
-    "lodash": "^4.17.21",
-    "npm": "^11.2.0",
-    "pinia": "^3.0.1",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
-  }
+  "extends": "@antfu"
 }

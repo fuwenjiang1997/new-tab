@@ -5,7 +5,7 @@
 @tailwind utilities; */
 
 @theme {
-  --font-display: "Satoshi", "sans-serif";
+  --font-display: 'Satoshi', 'sans-serif';
   --icon-size: 60px;
   --icon-gap-y: 30px;
   --icon-gap-x: 30px;
@@ -27,7 +27,7 @@
     @apply relative;
   }
   .app-item-icon {
-    @apply block w-full h-full rounded-2xl overflow-hidden shadow-2xl
+    @apply block w-full h-full rounded-2xl overflow-hidden shadow-2xl;
   }
   .icon-size-1x1 {
     width: var(--icon-size);
@@ -54,13 +54,13 @@
     grid-row: span 2;
   }
   .icon-size-4x2 {
-    width: calc(var(--icon-size) * 4 + var(--icon-gap-x) * 3 );
+    width: calc(var(--icon-size) * 4 + var(--icon-gap-x) * 3);
     height: calc(var(--icon-size) * 2 + var(--icon-gap-x));
     grid-column: span 4;
     grid-row: span 2;
   }
   .icon-size-2x4 {
-    width: calc(var(--icon-size) * 2 + var(--icon-gap-x) );
+    width: calc(var(--icon-size) * 2 + var(--icon-gap-x));
     height: calc(var(--icon-size) * 4 + var(--icon-gap-x) * 3);
     grid-column: span 2;
     grid-row: span 4;

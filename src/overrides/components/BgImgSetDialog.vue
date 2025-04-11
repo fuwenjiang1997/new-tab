@@ -1,5 +1,10 @@
 <template>
-  <a-modal v-model:open="open" title="修改背景图" @ok="onOk" @cancel="onCancel">
+  <a-modal
+    v-model:open="open"
+    title="修改背景图"
+    @ok="onOk"
+    @cancel="onCancel"
+  >
     <div class="flex gap-4 my-4">
       <a-upload
         v-model:file-list="bgImgList"
@@ -17,12 +22,16 @@
     </div>
 
     <div class="flex">
-      <img class="w-full h-80 object-cover" :src="bgImg || defaultBgImg" alt="" />
+      <img
+        class="w-full h-80 object-cover"
+        :src="bgImg || defaultBgImg"
+        alt=""
+      />
     </div>
   </a-modal>
 </template>
 <script setup>
-import { ref, defineExpose } from 'vue';
+import { ref, defineExpose } from 'vue'
 import useAppStore from '@/_stores/app'
 import { storeToRefs } from 'pinia'
 import defaultBgImg from '../assets/bg.jpeg'
@@ -54,7 +63,6 @@ function recoverBg() {
 }
 
 defineExpose({
-  show
+  show,
 })
-
 </script>
