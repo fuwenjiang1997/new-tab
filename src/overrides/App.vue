@@ -82,7 +82,7 @@ const renderMenus = computed(() => {
   const menus = [
     {
       label: '首页',
-      path: '/',
+      path: '/home',
       icon: HomeOutlined,
     },
     {

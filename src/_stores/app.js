@@ -9,6 +9,7 @@ import {
   getTodayDayjs,
 } from '@/_utils/util'
 import { useStorage } from '@vueuse/core'
+import { useIndexedDB } from '@/_hooks/useIndexDb'
 import dayjs from 'dayjs'
 import { defineStore } from 'pinia'
 import { computed, onBeforeMount, onMounted, ref, watch } from 'vue'
@@ -16,12 +17,13 @@ import { computed, onBeforeMount, onMounted, ref, watch } from 'vue'
 export default defineStore('app', () => {
   const menus = useStorage('menus', [])
   const bookmarks = useStorage('bookmarks', {})
-  const todos = useStorage('todos', {})
+  const todos = useStorage(`todos_${dayjs().format('YYYY-MM')}`, {})
   const alarmTasks = useStorage('alarmTasks', [])
   const homeAppList = useStorage('homeAppList', [])
   const config = useStorage('config', {
     bgImg: '',
   })
+  const [scripts, updateScripts] = useIndexedDB('scripts', [])
   const now = ref(dayjs())
   const nowDay = computed(() => now.value.format('YYYY-MM-DD'))
   const nowDayTodos = computed(() => {
@@ -44,6 +46,7 @@ export default defineStore('app', () => {
       task.notificationLastNotifyTime = ''
       task.notificationSuccessCount = 0
     })
+    todos.value = useStorage(`${nowDay.value.slice(0, 7)}`, {}).value
   })
 
   function checkItemIsNotifify(params, _now = dayjs()) {
@@ -197,5 +200,7 @@ export default defineStore('app', () => {
     homeAppList,
     homeAppMap,
     config,
+    scripts,
+    updateScripts,
   }
 })

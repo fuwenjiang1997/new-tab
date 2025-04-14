@@ -36,7 +36,7 @@
 import useAppStore from '@/_stores/app'
 import { fileToBase64 } from '@/_utils/util'
 import { storeToRefs } from 'pinia'
-import { defineExpose, ref } from 'vue'
+import { ref } from 'vue'
 import defaultBgImg from '../assets/bg.jpeg'
 
 const appStore = useAppStore()

@@ -35,9 +35,13 @@
         class="flex flex-col bg-neutral-700"
         style="height: calc(100% - 40px)"
       >
+        <p class="text-center text-sm py-1">
+          {{ activeDay }}
+        </p>
         <div class="flex-1 overflow-y-scroll no-scrollbar">
           <div
             v-for="item in dayTodos"
+            :key="item.id"
             class="flex gap-2 pt-2 px-4"
           >
             <a-checkbox v-model:checked="item.completed" />
@@ -191,16 +195,24 @@
 </template>
 <script setup>
 import useAppStore from '@/_stores/app'
+import { useStorage } from '@vueuse/core'
 import dayjs from 'dayjs'
 import { cloneDeep } from 'lodash'
 import { storeToRefs } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const appStore = useAppStore()
 const { now } = storeToRefs(appStore)
 const open = ref(false)
 const todoForm = ref({})
 const activeDay = ref(now.value.format('YYYY-MM-DD'))
+const todos = ref({})
+
+watch(() => activeDay.value, () => {
+  todos.value = useStorage(`todos_${activeDay.value.slice(0, 7)}`, {}).value
+}, {
+  immediate: true,
+})
 
 const baseTody = function () {
   return {
@@ -220,7 +232,7 @@ const baseTody = function () {
 }
 
 const dayTodos = computed(() => {
-  return appStore.todos[activeDay.value] || []
+  return todos.value[activeDay.value] || []
 })
 
 const changeTodoFormNotification = (newStatus) => {
@@ -245,7 +257,7 @@ const editTodo = (v) => {
 }
 
 const saveTodo = () => {
-  const todoList = appStore.todos[activeDay.value] || []
+  const todoList = todos.value[activeDay.value] || []
   const todoData = todoForm.value
   if (todoData.id) {
     const index = todoList.findIndex((item) => item.id === todoData.id)
@@ -254,16 +266,16 @@ const saveTodo = () => {
     todoData.id = new Date().getTime()
     todoList.push(todoData)
   }
-  appStore.todos[activeDay.value] = todoList
+  todos.value[activeDay.value] = todoList
   open.value = false
 }
 
 const deleteTodo = (v) => {
-  const todoList = appStore.todos[activeDay.value] || []
+  const todoList = todos.value[activeDay.value] || []
   const index = todoList.findIndex((item) => item.id === v.id)
   if (index !== -1) {
     todoList.splice(index, 1)
-    appStore.todos[activeDay.value] = todoList
+    todos.value[activeDay.value] = todoList
   }
 }
 </script>
