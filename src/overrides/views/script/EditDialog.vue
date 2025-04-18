@@ -26,6 +26,7 @@
 import useAppStore from '@/_stores/app'
 import { watch, ref } from 'vue'
 import { cloneDeep } from 'lodash'
+import { transform } from '@babel/standalone';
 
 const appStore = useAppStore()
 const open = ref(false)
@@ -39,6 +40,11 @@ watch(() => appStore.scripts, (val) => {
 async function onOk() {
   try {
     await formRef.value.validate()
+
+    form.value.es5Script = transform(form.value.script, {
+      presets: ['es2015']
+    }).code
+
     if (form.value.id) {
       scripts.value.findIndex((item, index) => {
       if (item.id === form.value.id) {
@@ -51,7 +57,9 @@ async function onOk() {
     }
     appStore.updateScripts(scripts.value)
     open.value = false
-  } catch (err) {}
+  } catch (err) {
+    console.log(err)
+  }
 }
 function onCancel() {
 }
@@ -61,6 +69,7 @@ function baseForm() {
     name: '',
     description: '',
     script: '',
+    es5Script: '',
     url: '*',
     autoRun: true,
   }

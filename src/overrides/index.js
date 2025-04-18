@@ -13,7 +13,7 @@ import '@/assets/index.css'
 const _routes = [
   {
     path: '/',
-    redirect: '/script',
+    redirect: '/home',
   },
   {
     path: '/home',

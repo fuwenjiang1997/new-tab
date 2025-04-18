@@ -3,3 +3,6 @@ export const NOTIFICATION_ALARM = '_alarm_' // 定时通知
 export const NOTIFICATION_TODO = '_todo_' // todo通知完成
 
 export const G_EVENT_TYPE_OPEN_URL = 'openUrl' // 打开url
+
+
+export const DBNAME_SCRIPTS = 'scripts'

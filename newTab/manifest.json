@@ -28,6 +28,30 @@
     "notifications",
     "alarms"
   ],
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "src/contentScript/index.js",
+        "assets/index.js-C8rBAxw1.js"
+      ],
+      "use_dynamic_url": false
+    }
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "assets/index.js-loader-CkOi-tss.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
   "offline_enabled": true,
   "host_permissions": [
     "<all_urls>"

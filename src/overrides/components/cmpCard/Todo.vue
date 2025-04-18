@@ -216,7 +216,7 @@ watch(() => activeDay.value, () => {
 
 const baseTody = function () {
   return {
-    name: '待办事项',
+    name: '',
     description: '',
     completed: false,
     index: 0,

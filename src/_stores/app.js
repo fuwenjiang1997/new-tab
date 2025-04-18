@@ -8,6 +8,7 @@ import {
   generateRandomString,
   getTodayDayjs,
 } from '@/_utils/util'
+import { DBNAME_SCRIPTS } from '@/_utils/const'
 import { useStorage } from '@vueuse/core'
 import { useIndexedDB } from '@/_hooks/useIndexDb'
 import dayjs from 'dayjs'
@@ -23,7 +24,7 @@ export default defineStore('app', () => {
   const config = useStorage('config', {
     bgImg: '',
   })
-  const [scripts, updateScripts] = useIndexedDB('scripts', [])
+  const [scripts, updateScripts] = useIndexedDB(DBNAME_SCRIPTS, [])
   const now = ref(dayjs())
   const nowDay = computed(() => now.value.format('YYYY-MM-DD'))
   const nowDayTodos = computed(() => {

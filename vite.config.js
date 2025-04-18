@@ -8,7 +8,6 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
 
-
 export default defineConfig({
   resolve: {
     alias: {
@@ -23,7 +22,7 @@ export default defineConfig({
     strictPort: true,
     hmr: {
       port: 5290,
-    },
+    }
   },
   build: {
     rollupOptions: {

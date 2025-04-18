@@ -27,6 +27,23 @@ export default {
     'notifications',
     'alarms'
   ],
+  web_accessible_resources: [
+    {
+      resources: ['src/contentScript/index.js'],
+      matches: ['<all_urls>']
+    }
+  ],
+  // content_security_policy: {
+  //   "extension_pages": "script-src 'self'; object-src 'self'"
+  // },  
+  content_scripts: [
+    {
+      matches: ['<all_urls>'],
+      js: ['src/contentScript/index.js'],
+      run_at: 'document_end',
+      all_frames: true
+    }
+  ],
   offline_enabled: true,
   host_permissions: ['<all_urls>'],
 }

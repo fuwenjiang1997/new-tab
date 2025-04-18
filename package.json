@@ -14,9 +14,11 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^7.0.1",
+    "@babel/standalone": "^7.27.0",
     "@vueuse/core": "^13.0.0",
     "ant-design-vue": "^4.2.6",
     "dayjs": "^1.11.13",
+    "eval5": "^1.4.8",
     "i": "^0.3.7",
     "idb": "^8.0.2",
     "lodash": "^4.17.21",

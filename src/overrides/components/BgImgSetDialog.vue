@@ -38,6 +38,7 @@ import { fileToBase64 } from '@/_utils/util'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import defaultBgImg from '../assets/bg.jpeg'
+import { UploadOutlined } from '@ant-design/icons-vue'
 
 const appStore = useAppStore()
 const { config } = storeToRefs(appStore)
