@@ -40,9 +40,17 @@ export default defineStore('app', () => {
   })
   const homeAppMap = computed(() => {
     const map = {}
+    console.log('computed homeAppList:>>>', homeAppList.value);
     homeAppList.value.forEach((item) => {
-      map[item.id] = item
+      if (item.type === 'group') {
+        item?.children?.forEach((child) => {
+          map[child.id] = child
+        })
+      } else {
+        map[item.id] = item
+      }
     })
+    console.log('map:>>', map);
     return map
   })
 

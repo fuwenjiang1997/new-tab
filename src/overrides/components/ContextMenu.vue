@@ -97,7 +97,7 @@ import {
   LayoutOutlined,
 } from '@ant-design/icons-vue'
 import { storeToRefs } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import BgImgSetDialog from './BgImgSetDialog.vue'
 import EditAppItemDialog from './EditAppItemDialog.vue'
 
@@ -114,7 +114,7 @@ function deleteApp() {
   homeAppList.value.splice(index, 1)
 }
 
-document.addEventListener('contextmenu', (event) => {
+function contextmenuHandler (event) {
   event.preventDefault()
   const appContainer = event.target.closest('div[app-icon]')
   appId.value = appContainer?.getAttribute('id')
@@ -123,11 +123,23 @@ document.addEventListener('contextmenu', (event) => {
   contextmenu.style.top = `${event.clientY  }px`
   contextmenu.style.left = `${event.clientX  }px`
   contextmenu.style.display = 'block'
-})
-document.addEventListener('click', () => {
+}
+
+function documentClickHandler(event) {
   const contextmenu = document.getElementById('contextmenu')
   contextmenu.style.display = 'none'
+}
+
+onMounted(() => {
+  document.addEventListener('contextmenu', contextmenuHandler)
+  document.addEventListener('click', documentClickHandler)
 })
+onBeforeUnmount(() => {
+  document.removeEventListener('contextmenu', contextmenuHandler)
+  document.removeEventListener('click', documentClickHandler)
+})
+
+
 </script>
 
 <style>

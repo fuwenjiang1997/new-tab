@@ -9,6 +9,10 @@
   --icon-size: 60px;
   --icon-gap-y: 30px;
   --icon-gap-x: 30px;
+
+  --icon-size-child: calc(var(--icon-size) - 10px);
+  --icon-gap-y-child: calc(var(--icon-gap-y) - 6px);
+  --icon-gap-x-child: calc(var(--icon-gap-x) - 6px);
 }
 
 @layer components {

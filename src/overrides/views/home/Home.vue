@@ -4,60 +4,74 @@
       {{ now.format('HH:mm:ss') }}
     </p>
     <div class="w-2/3 mx-auto">
-      <form
-        class="flex gap-2 h-12"
-        action="https://www.google.com/search"
-        method="GET"
-      >
-        <input
-          class="flex-1 h-full px-5 outline-0 bg-[rgba(0,0,0,0.5)] rounded-full"
-          type="text"
-          name="q"
-          placeholder="搜索 Google"
-          autofocus
-          autocomplete="off"
-        >
+      <form class="flex gap-2 h-12" action="https://www.google.com/search" method="GET">
+        <input class="flex-1 h-full px-5 outline-0 bg-[rgba(0,0,0,0.5)] rounded-full" type="text" name="q"
+          placeholder="搜索 Google" autofocus autocomplete="off">
       </form>
     </div>
 
-    <div class="flex gap-5 mt-20 w-4/5 mx-auto">
-      <div class="flex-1 icon-card-container">
-        <AlarmTask />
-        <GoOffWork />
-        <!-- <Weather></Weather> -->
+    <VueDraggable
+      v-model="homeAppList"
+      target="#custom-app-container"
+      draggable=".app-item-drag"
+      :group="{name: 'g1', put: true, pull: 'clone'}"
+      :setData="setData"
+      @add="onAdd"
+    >
+      <div class="flex gap-5 mt-20 w-4/5 mx-auto">
+        <div id="custom-app-container" class="flex-1 icon-card-container app-item-drop">
+          <AlarmTask />
+          <GoOffWork />
 
-        <MyIconCard
-          v-for="(item, index) in homeAppList"
-          :id="item.id"
-          :key="index"
-          :class="{
-            [`icon-size-${item.size || '1x1'}`]: true,
-          }"
-          :title="item.name"
-        >
-          <a
-            :href="item.link"
-            class="app-item-icon !flex flex-center p-2 bg-white text-black"
+          <MyIconCard
+            v-for="(item, index) in homeAppList"
+            :key="index"
+            :id="item.id"
+            :data-id="item.id"
+            :class="{
+              [`icon-size-${item.size || '1x1'}`]: true,
+              'app-item-drag': true,
+            }" 
+            :title="item.name"
           >
-            <img
-              v-if="item.icon"
-              :src="item.icon"
-              class="w-10 h-10 object-contain"
+            <VueDraggable
+              v-if="item.type === 'group'"
+              class="icon-card-container"
+              v-model="item.children"
+              draggable=".app-item-drag"
+              group="g1"
             >
-            <IconLink
-              v-else
-              class="w-full h-full"
-            />
-          </a>
-        </MyIconCard>
+              <MyIconCard
+                v-for="childItem in item.children"
+                :key="childItem.id"
+                :id="childItem.id"
+                :data-id="childItem.id"
+                class="app-item-drag"
+                :class="{
+                  [`icon-size-${childItem.size || '1x1'}`]: true,
+                }"
+                :title="childItem.name"
+              >
+                <a :href="childItem.link" class="app-item-icon !flex flex-center p-2 bg-white text-black">
+                  <img v-if="childItem.icon" :src="childItem.icon" class="w-10 h-10 object-contain">
+                  <IconLink v-else class="w-full h-full" />
+                </a>
+              </MyIconCard>
+            </VueDraggable>
 
-        <EditAppItem />
-      </div>
-      <div class="fixed-box shrink-0">
-        <Todo />
-      </div>
-    </div>
+            <a v-else :href="item.link" class="app-item-icon !flex flex-center p-2 bg-white text-black">
+              <img v-if="item.icon" :src="item.icon" class="w-10 h-10 object-contain">
+              <IconLink v-else class="w-full h-full" />
+            </a>
+          </MyIconCard>
 
+          <EditAppItem />
+        </div>
+        <div class="fixed-box shrink-0">
+          <Todo />
+        </div>
+      </div>
+    </VueDraggable>
   </div>
 </template>
 <script setup>
@@ -68,10 +82,17 @@ import EditAppItem from '@/overrides/components/cmpCard/EditAppItem.vue'
 import GoOffWork from '@/overrides/components/cmpCard/GoOffWork.vue'
 import Todo from '@/overrides/components/cmpCard/Todo.vue'
 import { storeToRefs } from 'pinia'
+import { useDraggable, VueDraggable } from 'vue-draggable-plus'
 
 const appStore = useAppStore()
 const { now, homeAppList } = storeToRefs(appStore)
 
+function setData(v1, v2) {
+  console.log(v1, v2)
+}
+function onAdd(event) {
+  console.log('event:>>', event);
+}
 </script>
 
 <style scoped>

@@ -1,2 +1,24 @@
 @import './base.css';
 @import './tailwind.css';
+
+[class^="icon-size-"] [class^="icon-size-"] {
+  /* --icon-gap-x: calc(var(--icon-gap-x) - 6px);
+  --icon-gap-y: calc(var(--icon-gap-y) - 6px);
+  --icon-size: calc(var(--icon-gap-y) - 10px); */
+  background: red!important;
+}
+
+.icon-card-container .icon-card-container {
+  --icon-gap-x: var(--icon-gap-x-child);
+  --icon-gap-y: var(--icon-gap-y-child);
+  --icon-size: var(--icon-size-child);
+
+  height: 100%;
+  padding: calc(var(--icon-gap-x)) calc(var(--icon-gap-y));
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,6 +1,6 @@
 export default {
   manifest_version: 3,
-  version: '1.0.0',
+  version: '1.0.1',
   'name': 'New Tab',
   'description': 'Chrome New Tab',
   'action': {
