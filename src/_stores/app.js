@@ -21,6 +21,17 @@ export default defineStore('app', () => {
   const todos = useStorage(`todos_${dayjs().format('YYYY-MM')}`, {})
   const alarmTasks = useStorage('alarmTasks', [])
   const homeAppList = useStorage('homeAppList', [])
+  const baseGoOffWorkTimeConfig = () => ({
+    customIcon: '',
+    label: '',
+    customPath: '',
+    bgSetType: 1,
+    bgColor: 'rgb(244, 238, 230)',
+    textColor: '',
+    weekWorkDay: [true, true, true, true, true, false, false],
+    workTime: ['09:00', '18:30']
+  })
+  const goOffWorkTimeConfig = useStorage('goOffWorkTimeConfig', baseGoOffWorkTimeConfig())
   const config = useStorage('config', {
     bgImg: '',
   })
@@ -203,5 +214,7 @@ export default defineStore('app', () => {
     config,
     scripts,
     updateScripts,
+    baseGoOffWorkTimeConfig,
+    goOffWorkTimeConfig,
   }
 })

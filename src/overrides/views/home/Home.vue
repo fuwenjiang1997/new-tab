@@ -57,6 +57,7 @@
         <Todo />
       </div>
     </div>
+
   </div>
 </template>
 <script setup>
@@ -69,8 +70,8 @@ import Todo from '@/overrides/components/cmpCard/Todo.vue'
 import { storeToRefs } from 'pinia'
 
 const appStore = useAppStore()
-
 const { now, homeAppList } = storeToRefs(appStore)
+
 </script>
 
 <style scoped>

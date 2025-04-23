@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
+    ACheckableTag: typeof import('ant-design-vue/es')['CheckableTag']
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
@@ -22,11 +23,13 @@ declare module 'vue' {
     ATag: typeof import('ant-design-vue/es')['Tag']
     ATextarea: typeof import('ant-design-vue/es')['Textarea']
     ATimePicker: typeof import('ant-design-vue/es')['TimePicker']
+    ATimeRangePicker: typeof import('ant-design-vue/es')['TimeRangePicker']
     AUpload: typeof import('ant-design-vue/es')['Upload']
     Button: typeof import('./src/_components/Button.vue')['default']
     IconLink: typeof import('./src/_components/icons/IconLink.vue')['default']
     IHugeiconsImage01: typeof import('~icons/hugeicons/image01')['default']
     ITablerLocationShare: typeof import('~icons/tabler/location-share')['default']
+    NColorPicker: typeof import('naive-ui')['NColorPicker']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
