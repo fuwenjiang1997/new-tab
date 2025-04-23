@@ -8,7 +8,7 @@ import {
   generateRandomString,
   getTodayDayjs,
 } from '@/_utils/util'
-import { DBNAME_SCRIPTS } from '@/_utils/const'
+import { DBNAME_SCRIPTS, MONTH_END, MONTH_START } from '@/_utils/const'
 import { useStorage } from '@vueuse/core'
 import { useIndexedDB } from '@/_hooks/useIndexDb'
 import dayjs from 'dayjs'
@@ -26,7 +26,8 @@ export default defineStore('app', () => {
     bgColor: 'rgb(244, 238, 230)',
     textColor: 'rgb(55, 33, 40)',
     weekWorkDay: [true, true, true, true, true, false, false],
-    workTime: ['09:00', '18:30']
+    workTime: ['09:00', '18:30'],
+    salaryDay: MONTH_END
   })
   const goOffWorkTimeConfig = useStorage('goOffWorkTimeConfig', baseGoOffWorkTimeConfig())
   const config = useStorage('config', {

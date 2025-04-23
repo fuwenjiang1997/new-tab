@@ -24,7 +24,6 @@
             v-model:value="formState.workTime"
             value-format="HH:mm"
             format="HH:mm"
-            @change="() => { console.log(formState.workTime) }"
           />
         </a-form-item>
 
@@ -80,6 +79,14 @@
             </div>
           </div>
         </a-form-item>
+
+        <a-form-item label="发薪日" name="salaryDay" :rules="[{ required: true }]">
+          <div class="flex gap-2">
+            <a-date-picker :value="isSpecialsalaryDay ? '' : formState.salaryDay" @update:value="(v) => formState.salaryDay = v" format="MM-DD" valueFormat="MM-DD" />
+            <a-button :type="formState.salaryDay === MONTH_END ? 'primary' : 'default'" @click="formState.salaryDay = MONTH_END">月底</a-button>
+            <a-button :type="formState.salaryDay === MONTH_START ? 'primary' : 'default'" @click="formState.salaryDay = MONTH_START">月初</a-button>
+          </div>
+        </a-form-item>
       </a-form>
     </div>
   </a-modal>
@@ -88,7 +95,8 @@
 import useAppStore from '@/_stores/app'
 import {CheckOutlined} from '@ant-design/icons-vue'
 import { cloneDeep } from 'lodash'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import {  MONTH_END, MONTH_START } from '@/_utils/const'
 
 const appStore = useAppStore()
 const open = ref(false)
@@ -104,6 +112,7 @@ const weekOptions = [
   { label: '周日', value: 0 },
 ]
 const shortcutBgColors = ['rgb(255, 255, 255)', 'rgb(244, 238, 230)','rgb(163, 221, 185)',  'rgb(125, 172, 104)', 'rgb(251, 190, 35)', 'rgb(252, 69, 72)', 'rgb(200, 172, 112)', 'rgb(2, 51, 115)',  'rgb(55, 33, 40)', 'rgb(200, 44, 52)', 'rgb(5, 64, 146)',  'rgb(36, 88, 119)','rgb(75, 60, 54)']
+const isSpecialsalaryDay = computed(() => [MONTH_START, MONTH_END].includes(formState.value.salaryDay))
 
 function onOk() {
   open.value = false

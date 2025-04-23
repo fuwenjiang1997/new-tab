@@ -6,3 +6,5 @@ export const G_EVENT_TYPE_OPEN_URL = 'openUrl' // 打开url
 
 
 export const DBNAME_SCRIPTS = 'scripts'
+export const MONTH_END = 'monthEnd'
+export const MONTH_START = 'monthStart'

@@ -1,6 +1,6 @@
 {
   "../../../../../../@crx/manifest": {
-    "file": "assets/crx-manifest.js-Kd_EOjKp.js",
+    "file": "assets/crx-manifest.js-p3K73B_K.js",
     "name": "crx-manifest.js",
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
@@ -12,20 +12,20 @@
       "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   },
-  "_index-BLSoJnNY.css": {
-    "file": "assets/index-BLSoJnNY.css",
-    "src": "_index-BLSoJnNY.css"
-  },
-  "_index-D3-MmQIt.js": {
-    "file": "assets/index-D3-MmQIt.js",
+  "_index-BC5KOrBs.js": {
+    "file": "assets/index-BC5KOrBs.js",
     "name": "index",
     "imports": [
       "_reactivity.esm-bundler-DUebAWEU.js",
       "__plugin-vue_export-helper-DOlNgjRZ.js"
     ],
     "css": [
-      "assets/index-BLSoJnNY.css"
+      "assets/index-DRKz3gTK.css"
     ]
+  },
+  "_index-DRKz3gTK.css": {
+    "file": "assets/index-DRKz3gTK.css",
+    "src": "_index-DRKz3gTK.css"
   },
   "_index.js-loader-CkOi-tss.js": {
     "file": "assets/index.js-loader-CkOi-tss.js",
@@ -35,20 +35,20 @@
     "file": "assets/reactivity.esm-bundler-DUebAWEU.js",
     "name": "reactivity.esm-bundler"
   },
-  "_useIndexDb-Bcs9G-NS.js": {
-    "file": "assets/useIndexDb-Bcs9G-NS.js",
+  "_useIndexDb-829ZNfSZ.js": {
+    "file": "assets/useIndexDb-829ZNfSZ.js",
     "name": "useIndexDb",
     "imports": [
       "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   },
   "src/background/index.js": {
-    "file": "assets/index.js-vGYCq7-P.js",
+    "file": "assets/index.js-BwUBfmQQ.js",
     "name": "index.js",
     "src": "src/background/index.js",
     "isEntry": true,
     "imports": [
-      "_useIndexDb-Bcs9G-NS.js",
+      "_useIndexDb-829ZNfSZ.js",
       "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   },
@@ -73,14 +73,14 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-C95rlYDu.js",
+    "file": "assets/overrides-CBtOPMPV.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
       "__plugin-vue_export-helper-DOlNgjRZ.js",
-      "_index-D3-MmQIt.js",
-      "_useIndexDb-Bcs9G-NS.js",
+      "_index-BC5KOrBs.js",
+      "_useIndexDb-829ZNfSZ.js",
       "_reactivity.esm-bundler-DUebAWEU.js"
     ],
     "css": [
@@ -91,13 +91,13 @@
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-BEwM2dp_.js",
+    "file": "assets/popup-DfkIofhJ.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
       "__plugin-vue_export-helper-DOlNgjRZ.js",
-      "_index-D3-MmQIt.js",
+      "_index-BC5KOrBs.js",
       "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   }

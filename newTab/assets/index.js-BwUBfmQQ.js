@@ -1,0 +1,1 @@
+import{u as n,D as a}from"./useIndexDb-829ZNfSZ.js";import"./reactivity.esm-bundler-DUebAWEU.js";let t=[];const[d,f,c]=n(a,[]);async function e(){t=await c()}chrome.runtime.onMessage.addListener(async(s,o,i)=>{const{action:r,location:p}=s;r==="executeScript"&&Array.isArray(t)&&i(JSON.stringify(t))});e();setInterval(async()=>{e()},5e3);
