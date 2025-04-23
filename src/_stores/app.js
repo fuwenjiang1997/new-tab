@@ -22,12 +22,9 @@ export default defineStore('app', () => {
   const alarmTasks = useStorage('alarmTasks', [])
   const homeAppList = useStorage('homeAppList', [])
   const baseGoOffWorkTimeConfig = () => ({
-    customIcon: '',
-    label: '',
-    customPath: '',
     bgSetType: 1,
     bgColor: 'rgb(244, 238, 230)',
-    textColor: '',
+    textColor: 'rgb(55, 33, 40)',
     weekWorkDay: [true, true, true, true, true, false, false],
     workTime: ['09:00', '18:30']
   })
