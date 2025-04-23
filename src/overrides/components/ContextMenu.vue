@@ -88,7 +88,6 @@
   <EditAppItemDialog ref="editAppItemRef" />
   <BgImgSetDialog ref="bgImgSetDialogRef" />
   <BgImgSetDialog ref="bgImgSetDialogRef" />
-  <GoOffWorkTimeSetDialog ref="goOffWorkTimeSetDialogRef" />
 </template>
 <script setup>
 import useAppStore from '@/_stores/app'
@@ -101,14 +100,12 @@ import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import BgImgSetDialog from './BgImgSetDialog.vue'
 import EditAppItemDialog from './EditAppItemDialog.vue'
-import GoOffWorkTimeSetDialog from './GoOffWorkTimeSetDialog.vue'
 
 const appStore = useAppStore()
 const { homeAppMap, homeAppList } = storeToRefs(appStore)
 const isApp = ref(false)
 const appId = ref()
 const editAppItemRef = ref()
-const goOffWorkTimeSetDialogRef = ref()
 const app = computed(() => homeAppMap.value[appId.value])
 const bgImgSetDialogRef = ref()
 
