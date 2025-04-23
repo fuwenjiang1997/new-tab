@@ -15,8 +15,6 @@
       target="#custom-app-container"
       draggable=".app-item-drag"
       :group="{name: 'g1', put: true, pull: 'clone'}"
-      :setData="setData"
-      @add="onAdd"
     >
       <div class="flex gap-5 mt-20 w-4/5 mx-auto">
         <div id="custom-app-container" class="flex-1 icon-card-container app-item-drop">
@@ -82,17 +80,10 @@ import EditAppItem from '@/overrides/components/cmpCard/EditAppItem.vue'
 import GoOffWork from '@/overrides/components/cmpCard/GoOffWork.vue'
 import Todo from '@/overrides/components/cmpCard/Todo.vue'
 import { storeToRefs } from 'pinia'
-import { useDraggable, VueDraggable } from 'vue-draggable-plus'
+import { VueDraggable } from 'vue-draggable-plus'
 
 const appStore = useAppStore()
 const { now, homeAppList } = storeToRefs(appStore)
-
-function setData(v1, v2) {
-  console.log(v1, v2)
-}
-function onAdd(event) {
-  console.log('event:>>', event);
-}
 </script>
 
 <style scoped>

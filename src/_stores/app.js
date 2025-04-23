@@ -40,7 +40,6 @@ export default defineStore('app', () => {
   })
   const homeAppMap = computed(() => {
     const map = {}
-    console.log('computed homeAppList:>>>', homeAppList.value);
     homeAppList.value.forEach((item) => {
       if (item.type === 'group') {
         item?.children?.forEach((child) => {
@@ -50,7 +49,6 @@ export default defineStore('app', () => {
         map[item.id] = item
       }
     })
-    console.log('map:>>', map);
     return map
   })
 
@@ -125,7 +123,6 @@ export default defineStore('app', () => {
       const alarmTask = alarmTasks.value[i]
       const { notificationRepeatCount } = alarmTask
       const isNotifyWeekDay = alarmTask.weeks[_now.day()]
-      console.log(checkItemIsNotifify(alarmTask, _now))
       if (isNotifyWeekDay && checkItemIsNotifify(alarmTask, _now)) {
         chromeNotification(
           `${generateRandomString(10)}%_%${NOTIFICATION_ALARM}%_%${alarmTask.id}`,
@@ -189,10 +186,6 @@ export default defineStore('app', () => {
   let nowTimetimer
   let notifiCheckTimer
   onMounted(() => {
-    const a = dayjs()
-    const b = dayjs('2025-01-01 00:00:00')
-
-    console.log('a,b:>>', a.isAfter(b))
     nowTimetimer = setInterval(() => {
       now.value = dayjs()
     }, 1000)

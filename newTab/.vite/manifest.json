@@ -1,55 +1,55 @@
 {
   "../../../../../../@crx/manifest": {
-    "file": "assets/crx-manifest.js-Cqpy130r.js",
+    "file": "assets/crx-manifest.js-Kd_EOjKp.js",
     "name": "crx-manifest.js",
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
   },
-  "__plugin-vue_export-helper-Xgk3Xx1W.js": {
-    "file": "assets/_plugin-vue_export-helper-Xgk3Xx1W.js",
+  "__plugin-vue_export-helper-DOlNgjRZ.js": {
+    "file": "assets/_plugin-vue_export-helper-DOlNgjRZ.js",
     "name": "_plugin-vue_export-helper",
     "imports": [
-      "_reactivity.esm-bundler-CWl8HUDm.js"
+      "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   },
-  "_index-B8HbtIW4.js": {
-    "file": "assets/index-B8HbtIW4.js",
+  "_index-BLSoJnNY.css": {
+    "file": "assets/index-BLSoJnNY.css",
+    "src": "_index-BLSoJnNY.css"
+  },
+  "_index-D3-MmQIt.js": {
+    "file": "assets/index-D3-MmQIt.js",
     "name": "index",
     "imports": [
-      "_reactivity.esm-bundler-CWl8HUDm.js",
-      "__plugin-vue_export-helper-Xgk3Xx1W.js"
+      "_reactivity.esm-bundler-DUebAWEU.js",
+      "__plugin-vue_export-helper-DOlNgjRZ.js"
     ],
     "css": [
-      "assets/index-Dxju4PMe.css"
+      "assets/index-BLSoJnNY.css"
     ]
-  },
-  "_index-Dxju4PMe.css": {
-    "file": "assets/index-Dxju4PMe.css",
-    "src": "_index-Dxju4PMe.css"
   },
   "_index.js-loader-CkOi-tss.js": {
     "file": "assets/index.js-loader-CkOi-tss.js",
     "src": "_index.js-loader-CkOi-tss.js"
   },
-  "_reactivity.esm-bundler-CWl8HUDm.js": {
-    "file": "assets/reactivity.esm-bundler-CWl8HUDm.js",
+  "_reactivity.esm-bundler-DUebAWEU.js": {
+    "file": "assets/reactivity.esm-bundler-DUebAWEU.js",
     "name": "reactivity.esm-bundler"
   },
-  "_useIndexDb-txkRvO-D.js": {
-    "file": "assets/useIndexDb-txkRvO-D.js",
+  "_useIndexDb-Bcs9G-NS.js": {
+    "file": "assets/useIndexDb-Bcs9G-NS.js",
     "name": "useIndexDb",
     "imports": [
-      "_reactivity.esm-bundler-CWl8HUDm.js"
+      "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   },
   "src/background/index.js": {
-    "file": "assets/index.js-3tN9gi9U.js",
+    "file": "assets/index.js-vGYCq7-P.js",
     "name": "index.js",
     "src": "src/background/index.js",
     "isEntry": true,
     "imports": [
-      "_useIndexDb-txkRvO-D.js",
-      "_reactivity.esm-bundler-CWl8HUDm.js"
+      "_useIndexDb-Bcs9G-NS.js",
+      "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   },
   "src/contentScript/index.js": {
@@ -59,13 +59,13 @@
     "isEntry": true
   },
   "src/offscreen/index.html": {
-    "file": "assets/offscreen-LFEjSBON.js",
+    "file": "assets/offscreen-IMK8VpEW.js",
     "name": "offscreen",
     "src": "src/offscreen/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-Xgk3Xx1W.js",
-      "_reactivity.esm-bundler-CWl8HUDm.js"
+      "__plugin-vue_export-helper-DOlNgjRZ.js",
+      "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   },
   "src/overrides/assets/bg.jpeg": {
@@ -73,32 +73,32 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-Cf0calQT.js",
+    "file": "assets/overrides-C95rlYDu.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-Xgk3Xx1W.js",
-      "_index-B8HbtIW4.js",
-      "_useIndexDb-txkRvO-D.js",
-      "_reactivity.esm-bundler-CWl8HUDm.js"
+      "__plugin-vue_export-helper-DOlNgjRZ.js",
+      "_index-D3-MmQIt.js",
+      "_useIndexDb-Bcs9G-NS.js",
+      "_reactivity.esm-bundler-DUebAWEU.js"
     ],
     "css": [
-      "assets/overrides-D5VtzEs3.css"
+      "assets/overrides-B0SbE0Hv.css"
     ],
     "assets": [
       "assets/bg-wEh6Y2Up.jpeg"
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-D2fjb7ga.js",
+    "file": "assets/popup-BEwM2dp_.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-Xgk3Xx1W.js",
-      "_index-B8HbtIW4.js",
-      "_reactivity.esm-bundler-CWl8HUDm.js"
+      "__plugin-vue_export-helper-DOlNgjRZ.js",
+      "_index-D3-MmQIt.js",
+      "_reactivity.esm-bundler-DUebAWEU.js"
     ]
   }
 }
