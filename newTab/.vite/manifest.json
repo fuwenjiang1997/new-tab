@@ -1,55 +1,55 @@
 {
   "../../../../../../@crx/manifest": {
-    "file": "assets/crx-manifest.js-p3K73B_K.js",
+    "file": "assets/crx-manifest.js-BURyVELL.js",
     "name": "crx-manifest.js",
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
   },
-  "__plugin-vue_export-helper-DOlNgjRZ.js": {
-    "file": "assets/_plugin-vue_export-helper-DOlNgjRZ.js",
+  "__plugin-vue_export-helper-CQAvzRI9.js": {
+    "file": "assets/_plugin-vue_export-helper-CQAvzRI9.js",
     "name": "_plugin-vue_export-helper",
     "imports": [
-      "_reactivity.esm-bundler-DUebAWEU.js"
+      "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   },
-  "_index-BC5KOrBs.js": {
-    "file": "assets/index-BC5KOrBs.js",
+  "_index-BmnBUfyw.js": {
+    "file": "assets/index-BmnBUfyw.js",
     "name": "index",
     "imports": [
-      "_reactivity.esm-bundler-DUebAWEU.js",
-      "__plugin-vue_export-helper-DOlNgjRZ.js"
+      "_reactivity.esm-bundler-BDW2OMwl.js",
+      "__plugin-vue_export-helper-CQAvzRI9.js"
     ],
     "css": [
-      "assets/index-DRKz3gTK.css"
+      "assets/index-CabJdtO4.css"
     ]
   },
-  "_index-DRKz3gTK.css": {
-    "file": "assets/index-DRKz3gTK.css",
-    "src": "_index-DRKz3gTK.css"
+  "_index-CabJdtO4.css": {
+    "file": "assets/index-CabJdtO4.css",
+    "src": "_index-CabJdtO4.css"
   },
   "_index.js-loader-CkOi-tss.js": {
     "file": "assets/index.js-loader-CkOi-tss.js",
     "src": "_index.js-loader-CkOi-tss.js"
   },
-  "_reactivity.esm-bundler-DUebAWEU.js": {
-    "file": "assets/reactivity.esm-bundler-DUebAWEU.js",
+  "_reactivity.esm-bundler-BDW2OMwl.js": {
+    "file": "assets/reactivity.esm-bundler-BDW2OMwl.js",
     "name": "reactivity.esm-bundler"
   },
-  "_useIndexDb-829ZNfSZ.js": {
-    "file": "assets/useIndexDb-829ZNfSZ.js",
+  "_useIndexDb-t1GG_2ZI.js": {
+    "file": "assets/useIndexDb-t1GG_2ZI.js",
     "name": "useIndexDb",
     "imports": [
-      "_reactivity.esm-bundler-DUebAWEU.js"
+      "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   },
   "src/background/index.js": {
-    "file": "assets/index.js-BwUBfmQQ.js",
+    "file": "assets/index.js-CmWfc6qo.js",
     "name": "index.js",
     "src": "src/background/index.js",
     "isEntry": true,
     "imports": [
-      "_useIndexDb-829ZNfSZ.js",
-      "_reactivity.esm-bundler-DUebAWEU.js"
+      "_useIndexDb-t1GG_2ZI.js",
+      "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   },
   "src/contentScript/index.js": {
@@ -59,13 +59,13 @@
     "isEntry": true
   },
   "src/offscreen/index.html": {
-    "file": "assets/offscreen-IMK8VpEW.js",
+    "file": "assets/offscreen-D0oMGCIs.js",
     "name": "offscreen",
     "src": "src/offscreen/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DOlNgjRZ.js",
-      "_reactivity.esm-bundler-DUebAWEU.js"
+      "__plugin-vue_export-helper-CQAvzRI9.js",
+      "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   },
   "src/overrides/assets/bg.jpeg": {
@@ -73,32 +73,32 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-CBtOPMPV.js",
+    "file": "assets/overrides-CqvbMg1c.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DOlNgjRZ.js",
-      "_index-BC5KOrBs.js",
-      "_useIndexDb-829ZNfSZ.js",
-      "_reactivity.esm-bundler-DUebAWEU.js"
+      "__plugin-vue_export-helper-CQAvzRI9.js",
+      "_index-BmnBUfyw.js",
+      "_useIndexDb-t1GG_2ZI.js",
+      "_reactivity.esm-bundler-BDW2OMwl.js"
     ],
     "css": [
-      "assets/overrides-B0SbE0Hv.css"
+      "assets/overrides-DV3vtjf0.css"
     ],
     "assets": [
       "assets/bg-wEh6Y2Up.jpeg"
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-DfkIofhJ.js",
+    "file": "assets/popup-m_9zxKJq.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-DOlNgjRZ.js",
-      "_index-BC5KOrBs.js",
-      "_reactivity.esm-bundler-DUebAWEU.js"
+      "__plugin-vue_export-helper-CQAvzRI9.js",
+      "_index-BmnBUfyw.js",
+      "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   }
 }

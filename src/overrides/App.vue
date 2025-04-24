@@ -52,13 +52,27 @@
         </div>
       </aside>
 
-      <main class="flex-1">
-        <router-view />
+      <main class="flex-1 flex flex-col">
+        <div class="flex-1 overflow-hidden">
+          <router-view />
+        </div>
+        <div class="yiyan-container h-10 shrink-0 pt-1 text-center">
+          <div class="relative inline-block text-xs">
+            <p class="yiyan-content">「{{ yiyan.hitokoto }}」</p>
+            <p class="yiyan-from opacity-0">{{ yiyan.from }}</p>
+            <div class="yiyan-handler hidden absolute left-full top-0 ml-4 flex-center px-2 py-1 bg-[rgba(255,255,255,0.4)] text-xs rounded-md">
+                <CopyOutlined class="mr-2 cursor-pointer px-1 py-1 hover:bg-[rgba(255,255,255,0.2)] rounded-sm" @click="copy(yiyan.hitokoto)" />
+                <ReloadOutlined class="cursor-pointer px-1 py-1 hover:bg-[rgba(255,255,255,0.2)] rounded-sm" @click="appStore.getYiYan" />
+              </div>
+          </div>
+        </div>
+        
       </main>
     </div>
 
     <AddMenuDialog v-model:visiable="addMenuVisiable" />
     <ContextMenu />
+    <n-alert v-if="copied" class=" !absolute top-4 right-2 w-50 transition-all" title="" type="success" closable> 复制成功 </n-alert>
   </div>
 </template>
 <script setup>
@@ -67,15 +81,18 @@ import {
   CodeOutlined,
   HomeOutlined,
   SettingOutlined,
+  CopyOutlined,
+  ReloadOutlined
 } from '@ant-design/icons-vue'
 import { storeToRefs } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import AddMenuDialog from './components/AddMenuDialog.vue'
 import ContextMenu from './components/ContextMenu.vue'
 import useMenuIcon from './hooks/useMenuIcon'
+import { useClipboard } from '@vueuse/core'
 
 const appStore = useAppStore()
-const { config } = storeToRefs(appStore)
+const { config, yiyan } = storeToRefs(appStore)
 const { customMenuIcons } = useMenuIcon()
 const addMenuVisiable = ref(false)
 const renderMenus = computed(() => {
@@ -93,6 +110,8 @@ const renderMenus = computed(() => {
   ]
   return [...menus, ...appStore.menus]
 })
+
+const { text, copy, copied, isSupported } = useClipboard({ source: yiyan.value.hitokoto })
 </script>
 
 <style scoped>
@@ -109,6 +128,16 @@ const renderMenus = computed(() => {
     background: rgba(0, 0, 0, 0.3);
     .active {
       background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+.yiyan-container {
+  &:hover {
+    .yiyan-from {
+      opacity: 1;
+    }
+    .yiyan-handler {
+      display: flex;
     }
   }
 }

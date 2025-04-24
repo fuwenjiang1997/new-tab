@@ -13,7 +13,7 @@ import { useStorage } from '@vueuse/core'
 import { useIndexedDB } from '@/_hooks/useIndexDb'
 import dayjs from 'dayjs'
 import { defineStore } from 'pinia'
-import { computed, onBeforeMount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeMount, onMounted, reactive, ref, watch } from 'vue'
 
 export default defineStore('app', () => {
   const menus = useStorage('menus', [])
@@ -21,6 +21,7 @@ export default defineStore('app', () => {
   const todos = useStorage(`todos_${dayjs().format('YYYY-MM')}`, {})
   const alarmTasks = useStorage('alarmTasks', [])
   const homeAppList = useStorage('homeAppList', [])
+  const yiyan = useStorage('yiyan', { hitokoto: '', from: '' })
   const baseGoOffWorkTimeConfig = () => ({
     bgSetType: 1,
     bgColor: 'rgb(244, 238, 230)',
@@ -184,9 +185,23 @@ export default defineStore('app', () => {
     )
   }
 
+  async function getYiYan() {
+    try {
+      const res = await (await fetch('https://api.codelife.cc/yiyan/random?lang=cn')).json()
+      // const { hitokoto, from: author } = res.data
+      console.log('res:>>', res.data, res.data.hitokoto);
+      if (res.data.hitokoto) {
+        yiyan.value = res.data
+      }
+    } catch (error) {
+    }
+  }
+
   let nowTimetimer
   let notifiCheckTimer
   onMounted(() => {
+    !yiyan.value.hitokoto && getYiYan()
+
     nowTimetimer = setInterval(() => {
       now.value = dayjs()
     }, 1000)
@@ -215,5 +230,7 @@ export default defineStore('app', () => {
     updateScripts,
     baseGoOffWorkTimeConfig,
     goOffWorkTimeConfig,
+    yiyan,
+    getYiYan
   }
 })

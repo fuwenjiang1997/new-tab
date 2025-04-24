@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-10 h-screen overflow-y-scroll no-scrollbar">
+  <div class="pt-10 h-full overflow-y-scroll no-scrollbar">
     <p class="mb-10 text-6xl text-center">
       {{ now.format('HH:mm:ss') }}
     </p>

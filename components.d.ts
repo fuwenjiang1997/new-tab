@@ -30,6 +30,7 @@ declare module 'vue' {
     IconLink: typeof import('./src/_components/icons/IconLink.vue')['default']
     IHugeiconsImage01: typeof import('~icons/hugeicons/image01')['default']
     ITablerLocationShare: typeof import('~icons/tabler/location-share')['default']
+    NAlert: typeof import('naive-ui')['NAlert']
     NColorPicker: typeof import('naive-ui')['NColorPicker']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
