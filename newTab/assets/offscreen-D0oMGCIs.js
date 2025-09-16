@@ -1,1 +1,0 @@
-import{_ as e,c,o as r,d as t}from"./_plugin-vue_export-helper-CQAvzRI9.js";import"./reactivity.esm-bundler-BDW2OMwl.js";const n={};function o(s,p){return r(),c("div",null,"你好")}const a=e(n,[["render",o]]);t(a).use(router).use(createPinia()).mount("#app");

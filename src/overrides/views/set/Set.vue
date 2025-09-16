@@ -1,5 +1,9 @@
 <template>
   <div class="w-[500px] fixed top-0 right-0 flex gap-0 pl-[1px] h-full bg-[#141414] text-white">
+    <div class="absolute -left-8 flex-center w-8 h-8 top-0 bg-[rgba(0,0,0,0.3)] cursor-pointer hover:bg-[rgba(0,0,0,0.5)]" @click="isShowAppSet = false">
+      <CloseOutlined class=" text-base" />
+    </div>
+
     <div class="w-[120px] flex flex-col gap-2 py-4 px-2 text-sm">
       <div class="h-10"></div>
       <div class="bg-[#333] h-[1px] my-2"></div>
@@ -28,12 +32,17 @@
 <script setup>
 import {
   InstagramOutlined,
-  SearchOutlined
+  SearchOutlined,
+  CloseOutlined
 } from '@ant-design/icons-vue'
 import { computed, ref } from 'vue';
 import IconSet from './views/app/IconSet.vue';
 import SerachBar from './views/searchBar/SearchBar.vue'
+import useAppStore from '@/_stores/app';
+import { storeToRefs } from 'pinia';
 
+const appStore = useAppStore()
+const { isShowAppSet } = storeToRefs(appStore)
 const menuOptions = [
   {
     label: '图标',

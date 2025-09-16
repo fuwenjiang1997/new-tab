@@ -5,27 +5,34 @@
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
   },
-  "__plugin-vue_export-helper-CQAvzRI9.js": {
-    "file": "assets/_plugin-vue_export-helper-CQAvzRI9.js",
+  "__plugin-vue_export-helper-fYZ_HZmk.js": {
+    "file": "assets/_plugin-vue_export-helper-fYZ_HZmk.js",
     "name": "_plugin-vue_export-helper",
     "imports": [
       "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   },
-  "_index-BmnBUfyw.js": {
-    "file": "assets/index-BmnBUfyw.js",
+  "_const-DVhSg5CT.js": {
+    "file": "assets/const-DVhSg5CT.js",
+    "name": "const",
+    "imports": [
+      "_reactivity.esm-bundler-BDW2OMwl.js"
+    ]
+  },
+  "_index-BDuVVupH.css": {
+    "file": "assets/index-BDuVVupH.css",
+    "src": "_index-BDuVVupH.css"
+  },
+  "_index-CkLfqgu5.js": {
+    "file": "assets/index-CkLfqgu5.js",
     "name": "index",
     "imports": [
       "_reactivity.esm-bundler-BDW2OMwl.js",
-      "__plugin-vue_export-helper-CQAvzRI9.js"
+      "__plugin-vue_export-helper-fYZ_HZmk.js"
     ],
     "css": [
-      "assets/index-CabJdtO4.css"
+      "assets/index-BDuVVupH.css"
     ]
-  },
-  "_index-CabJdtO4.css": {
-    "file": "assets/index-CabJdtO4.css",
-    "src": "_index-CabJdtO4.css"
   },
   "_index.js-loader-CkOi-tss.js": {
     "file": "assets/index.js-loader-CkOi-tss.js",
@@ -35,20 +42,13 @@
     "file": "assets/reactivity.esm-bundler-BDW2OMwl.js",
     "name": "reactivity.esm-bundler"
   },
-  "_useIndexDb-t1GG_2ZI.js": {
-    "file": "assets/useIndexDb-t1GG_2ZI.js",
-    "name": "useIndexDb",
-    "imports": [
-      "_reactivity.esm-bundler-BDW2OMwl.js"
-    ]
-  },
   "src/background/index.js": {
-    "file": "assets/index.js-CmWfc6qo.js",
+    "file": "assets/index.js-C0fflmUO.js",
     "name": "index.js",
     "src": "src/background/index.js",
     "isEntry": true,
     "imports": [
-      "_useIndexDb-t1GG_2ZI.js",
+      "_const-DVhSg5CT.js",
       "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   },
@@ -59,12 +59,12 @@
     "isEntry": true
   },
   "src/offscreen/index.html": {
-    "file": "assets/offscreen-D0oMGCIs.js",
+    "file": "assets/offscreen-B7mRbnMB.js",
     "name": "offscreen",
     "src": "src/offscreen/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-CQAvzRI9.js",
+      "__plugin-vue_export-helper-fYZ_HZmk.js",
       "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   },
@@ -73,31 +73,31 @@
     "src": "src/overrides/assets/bg.jpeg"
   },
   "src/overrides/index.html": {
-    "file": "assets/overrides-CqvbMg1c.js",
+    "file": "assets/overrides-BX6O0jXv.js",
     "name": "overrides",
     "src": "src/overrides/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-CQAvzRI9.js",
-      "_index-BmnBUfyw.js",
-      "_useIndexDb-t1GG_2ZI.js",
+      "__plugin-vue_export-helper-fYZ_HZmk.js",
+      "_index-CkLfqgu5.js",
+      "_const-DVhSg5CT.js",
       "_reactivity.esm-bundler-BDW2OMwl.js"
     ],
     "css": [
-      "assets/overrides-DV3vtjf0.css"
+      "assets/overrides-BYDihsH0.css"
     ],
     "assets": [
       "assets/bg-wEh6Y2Up.jpeg"
     ]
   },
   "src/popup/index.html": {
-    "file": "assets/popup-m_9zxKJq.js",
+    "file": "assets/popup-CBG2JN4m.js",
     "name": "popup",
     "src": "src/popup/index.html",
     "isEntry": true,
     "imports": [
-      "__plugin-vue_export-helper-CQAvzRI9.js",
-      "_index-BmnBUfyw.js",
+      "__plugin-vue_export-helper-fYZ_HZmk.js",
+      "_index-CkLfqgu5.js",
       "_reactivity.esm-bundler-BDW2OMwl.js"
     ]
   }

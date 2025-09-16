@@ -1,8 +1,5 @@
 <template>
   <div class="flex flex-col gap-3">
-    <div class="absolute -left-8 flex-center w-8 h-8 top-0 bg-[rgba(0,0,0,0.3)] cursor-pointer hover:bg-[rgba(0,0,0,0.5)]" @click="isShowAppSet = false">
-      <CloseOutlined class=" text-base" />
-    </div>
     <div class="my-card">
       <div class="flex items-center gap-2">
         <span class="w-16">图标大小</span>
@@ -44,18 +41,9 @@
   </div>
 </template>
 <script setup>
-import { reactive } from 'vue';
 import useAppStore from '@/_stores/app';
 import { storeToRefs } from 'pinia';
-import { CloseOutlined } from '@ant-design/icons-vue';
 
 const appStore = useAppStore()
-const { isShowAppSet, appSetForm } = storeToRefs(appStore)
-
-const formState  = reactive({
-  iconSize: 10
-});
-const labelCol = { style: { width: '80px' } };
-const wrapperCol = { span: 14 };
-
+const { appSetForm } = storeToRefs(appStore)
 </script>
