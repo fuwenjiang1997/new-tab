@@ -1,16 +1,15 @@
+import { useIndexedDB } from '@/_hooks/useIndexDb'
 import {
-  NOTIFICATION_ALARM,
-  NOTIFICATION_JUST_MESSAGE,
-  NOTIFICATION_TODO,
+  DBNAME_SCRIPTS,
+  MONTH_END,
+  MONTH_START, NOTIFICATION_ALARM, NOTIFICATION_JUST_MESSAGE, NOTIFICATION_TODO
 } from '@/_utils/const'
 import {
   chromeNotification,
   generateRandomString,
   getTodayDayjs,
 } from '@/_utils/util'
-import { DBNAME_SCRIPTS, MONTH_END, MONTH_START } from '@/_utils/const'
 import { useStorage } from '@vueuse/core'
-import { useIndexedDB } from '@/_hooks/useIndexDb'
 import dayjs from 'dayjs'
 import { defineStore } from 'pinia'
 import { computed, onBeforeMount, onMounted, reactive, ref, watch } from 'vue'
@@ -153,7 +152,7 @@ export default defineStore('app', () => {
   function notificationBtnEventHandler() {
     const eventHandler = {
       // 普通通知
-      [NOTIFICATION_JUST_MESSAGE]: () => {},
+      [NOTIFICATION_JUST_MESSAGE]: () => { },
       // 定时通知
       [NOTIFICATION_ALARM]: (btnIndex, id, handlerName, ...args) => {
         if (btnIndex === 0) {
@@ -189,7 +188,7 @@ export default defineStore('app', () => {
     try {
       const res = await (await fetch('https://api.codelife.cc/yiyan/random?lang=cn')).json()
       // const { hitokoto, from: author } = res.data
-      console.log('res:>>', res.data, res.data.hitokoto);
+      console.log('res:>>', res.data, res.data.hitokoto)
       if (res.data.hitokoto) {
         yiyan.value = res.data
       }
@@ -209,6 +208,17 @@ export default defineStore('app', () => {
       checkNotificationAction()
     }, 10000)
     notificationBtnEventHandler()
+  })
+
+  /**
+   * app设置相关
+   */
+  const isShowAppSet = ref(false)
+  const appSetForm = useStorage('appSetFrom', {
+    iconSize: 60,
+    iconRadius: 20,
+    iconOpacity: 1,
+    iconSpace: 20,
   })
 
   onBeforeMount(() => {
@@ -231,6 +241,8 @@ export default defineStore('app', () => {
     baseGoOffWorkTimeConfig,
     goOffWorkTimeConfig,
     yiyan,
-    getYiYan
+    getYiYan,
+    isShowAppSet,
+    appSetForm
   }
 })

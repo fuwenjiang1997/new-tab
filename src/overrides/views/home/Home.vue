@@ -5,8 +5,10 @@
     </p>
     <div class="w-2/3 mx-auto">
       <form class="flex gap-2 h-12" action="https://www.google.com/search" method="GET">
-        <input class="flex-1 h-full px-5 outline-0 bg-[rgba(0,0,0,0.5)] rounded-full" type="text" name="q"
-          placeholder="搜索 Google" autofocus autocomplete="off">
+        <input
+          class="flex-1 h-full px-5 outline-0 bg-[rgba(0,0,0,0.5)] rounded-full" type="text" name="q"
+          placeholder="搜索 Google" autofocus autocomplete="off"
+        >
       </form>
     </div>
 
@@ -23,26 +25,25 @@
 
           <MyIconCard
             v-for="(item, index) in homeAppList"
-            :key="index"
             :id="item.id"
+            :key="index"
             :data-id="item.id"
-            :class="{
+            class="app-item-drag" :class="{
               [`icon-size-${item.size || '1x1'}`]: true,
-              'app-item-drag': true,
             }" 
             :title="item.name"
           >
             <VueDraggable
               v-if="item.type === 'group'"
-              class="icon-card-container"
               v-model="item.children"
+              class="icon-card-container"
               draggable=".app-item-drag"
               group="g1"
             >
               <MyIconCard
                 v-for="childItem in item.children"
-                :key="childItem.id"
                 :id="childItem.id"
+                :key="childItem.id"
                 :data-id="childItem.id"
                 class="app-item-drag"
                 :class="{

@@ -7,7 +7,7 @@
     @cancel="onCancel"
   >
     <div class="flex items-center">
-      <slot :formState="formState"></slot>
+      <slot :form-state="formState" />
       <a-form :model="formState" :label-col="{ span: 4 }" :wrapper-col="{ span: 20 }">
         <a-form-item label="工作日" name="label" :rules="[{ required: true }]">
           <a-checkable-tag
@@ -29,22 +29,22 @@
 
         <a-form-item label="文字" name="workTime" :rules="[{ required: true }]">
           <div class="flex gap-1 items-center">
-                <div
-                  v-for="(item, index) in shortcutBgColors"
-                  :key="index"
-                  class="flex-center border w-5 h-5 rounded-full shrink-0 cursor-pointer hover:scale-105"
-                  :style="`background:${item}`"
-                  @click="formState.textColor = item"
-                >
-                  <CheckOutlined v-if="formState.textColor === item" :class="{ '!text-white': index >= 7 }" />
-                </div>
-                <div class=" w-40">
-                  <n-color-picker
-                    v-model:value="formState.textColor"
-                    :actions="['clear']"
-                  />
-                </div>
-              </div>
+            <div
+              v-for="(item, index) in shortcutBgColors"
+              :key="index"
+              class="flex-center border w-5 h-5 rounded-full shrink-0 cursor-pointer hover:scale-105"
+              :style="`background:${item}`"
+              @click="formState.textColor = item"
+            >
+              <CheckOutlined v-if="formState.textColor === item" :class="{ '!text-white': index >= 7 }" />
+            </div>
+            <div class=" w-40">
+              <n-color-picker
+                v-model:value="formState.textColor"
+                :actions="['clear']"
+              />
+            </div>
+          </div>
         </a-form-item>
 
         <a-form-item label="背景" name="workTime" :rules="[{ required: true }]">
@@ -82,9 +82,13 @@
 
         <a-form-item label="发薪日" name="salaryDay" :rules="[{ required: true }]">
           <div class="flex gap-2">
-            <a-date-picker :value="isSpecialsalaryDay ? '' : formState.salaryDay" @update:value="(v) => formState.salaryDay = v" format="MM-DD" valueFormat="MM-DD" />
-            <a-button :type="formState.salaryDay === MONTH_END ? 'primary' : 'default'" @click="formState.salaryDay = MONTH_END">月底</a-button>
-            <a-button :type="formState.salaryDay === MONTH_START ? 'primary' : 'default'" @click="formState.salaryDay = MONTH_START">月初</a-button>
+            <a-date-picker :value="isSpecialsalaryDay ? '' : formState.salaryDay" format="MM-DD" value-format="MM-DD" @update:value="(v) => formState.salaryDay = v" />
+            <a-button :type="formState.salaryDay === MONTH_END ? 'primary' : 'default'" @click="formState.salaryDay = MONTH_END">
+              月底
+            </a-button>
+            <a-button :type="formState.salaryDay === MONTH_START ? 'primary' : 'default'" @click="formState.salaryDay = MONTH_START">
+              月初
+            </a-button>
           </div>
         </a-form-item>
       </a-form>
@@ -93,10 +97,10 @@
 </template>
 <script setup>
 import useAppStore from '@/_stores/app'
+import {  MONTH_END, MONTH_START } from '@/_utils/const'
 import {CheckOutlined} from '@ant-design/icons-vue'
 import { cloneDeep } from 'lodash'
 import { computed, ref } from 'vue'
-import {  MONTH_END, MONTH_START } from '@/_utils/const'
 
 const appStore = useAppStore()
 const open = ref(false)

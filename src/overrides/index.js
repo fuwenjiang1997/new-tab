@@ -10,6 +10,7 @@ import ScriptPage from './views/script/Script.vue'
 import SetPage from './views/set/Set.vue'
 import '@/assets/index.css'
 
+
 const _routes = [
   {
     path: '/',
@@ -18,10 +19,6 @@ const _routes = [
   {
     path: '/home',
     component: HomePage,
-  },
-  {
-    path: '/set',
-    component: SetPage,
   },
   {
     path: '/script',

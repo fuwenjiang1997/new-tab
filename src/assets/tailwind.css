@@ -6,9 +6,9 @@
 
 @theme {
   --font-display: 'Satoshi', 'sans-serif';
-  --icon-size: 60px;
+  /* --icon-size: 60px;
   --icon-gap-y: 30px;
-  --icon-gap-x: 30px;
+  --icon-gap-x: 30px; */
 
   --icon-size-child: calc(var(--icon-size) - 10px);
   --icon-gap-y-child: calc(var(--icon-gap-y) - 6px);
@@ -86,4 +86,7 @@
   .flex-center {
     @apply flex items-center justify-center;
   }
+  .my-card {
+    @apply bg-[#222] text-[#cecece] rounded-xl p-4;
+  } 
 }

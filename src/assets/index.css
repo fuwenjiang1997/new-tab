@@ -22,3 +22,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.my-card .ant-slider .ant-slider-rail {
+  background: #393939!important;
+}
