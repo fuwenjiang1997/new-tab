@@ -19,13 +19,15 @@ export default {
     128: 'src/assets/logo.png',
   },
   'permissions': [
-    'activeTab', 
-    'scripting', 
-    'storage',   
-    'tabs',      
-    'webRequest', 
+    'activeTab',
+    'scripting',
+    'storage',
+    'tabs',
+    'webRequest',
     'notifications',
-    'alarms'
+    'alarms',
+    'declarativeNetRequest',
+    'declarativeNetRequestWithHostAccess'
   ],
   web_accessible_resources: [
     {
