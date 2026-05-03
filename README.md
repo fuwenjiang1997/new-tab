@@ -5,6 +5,18 @@
 这是一个功能丰富的浏览器新标签页扩展，提供了自定义背景、应用快捷方式、天气、待办事项等功能，旨在提升用户的浏览体验和工作效率。
 同时也是个chrome插件框架封装，方便开发者快速搭建chrome插件项目，可以删除不需要的功能模块后直接使用。
 
+## new Tab 演示效果
+
+![演示效果 6](https://img.cdn1.vip/i/69e8627035bbb_1776837232.webp)
+![演示效果 7](https://img.cdn1.vip/i/69e8626f1473d_1776837231.webp)
+![演示效果 8](https://img.cdn1.vip/i/69e8626f57498_1776837231.webp)
+![演示效果 9](https://img.cdn1.vip/i/69e86279da703_1776837241.webp)
+
+![演示效果 1](https://img.cdn1.vip/i/69e8627246420_1776837234.webp)
+![演示效果 2](https://img.cdn1.vip/i/69e862721a205_1776837234.webp)
+![演示效果 3](https://img.cdn1.vip/i/69e86271bdaa6_1776837233.webp)
+![演示效果 4](https://img.cdn1.vip/i/69e86271566ca_1776837233.webp)
+![演示效果 5](https://img.cdn1.vip/i/69e862707da3b_1776837232.webp)
 ## 目录结构
 
 ```
@@ -149,15 +161,3 @@
 - `Ctrl + K`：聚焦到搜索框
 - `Esc`：关闭当前打开的对话框
 - `Enter`：执行搜索或确认操作
-
-## new Tab 演示效果
-
-![演示效果 1](https://img.cdn1.vip/i/69e8627246420_1776837234.webp)
-![演示效果 2](https://img.cdn1.vip/i/69e862721a205_1776837234.webp)
-![演示效果 3](https://img.cdn1.vip/i/69e86271bdaa6_1776837233.webp)
-![演示效果 4](https://img.cdn1.vip/i/69e86271566ca_1776837233.webp)
-![演示效果 5](https://img.cdn1.vip/i/69e862707da3b_1776837232.webp)
-![演示效果 6](https://img.cdn1.vip/i/69e8627035bbb_1776837232.webp)
-![演示效果 7](https://img.cdn1.vip/i/69e8626f1473d_1776837231.webp)
-![演示效果 8](https://img.cdn1.vip/i/69e8626f57498_1776837231.webp)
-![演示效果 9](https://img.cdn1.vip/i/69e86279da703_1776837241.webp)
