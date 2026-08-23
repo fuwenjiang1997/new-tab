@@ -152,6 +152,17 @@
           </a-form-item>
 
           <a-form-item
+            label="结束通知时间"
+            name="notificationEndTime"
+          >
+            <a-time-picker
+              v-model:value="todoForm.notificationEndTime"
+              format="HH:mm"
+              value-format="YYYY-MM-DD HH:mm:ss"
+            />
+          </a-form-item>
+
+          <a-form-item
             label="通知间隔"
             name="notificationRepeatTime"
           >
@@ -169,7 +180,7 @@
                     <a-select-option :value="60 * 1000">
                       分
                     </a-select-option>
-                    <a-select-option :value="60 * 60 * 2000">
+                    <a-select-option :value="60 * 60 * 1000">
                       时
                     </a-select-option>
                   </a-select>
@@ -222,6 +233,7 @@ const baseTody = function () {
     index: 0,
     notification: false,
     notificationStartTime: '',
+    notificationEndTime: '',
     notificationLastNotifyTime: '', // 上一次通知的时间
     notificationRepeatCount: 1,
     notificationSuccessCount: 0, // 已通知次数

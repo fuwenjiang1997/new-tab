@@ -56,11 +56,15 @@ export default defineStore('app', () => {
   const gHandlerMap = {}
 
   // 新的一天
-  watch(nowDay, () => {
+  watch(nowDay, (newDay) => {
+    const todayOfWeek = dayjs(newDay).day()
     alarmTasks.value.forEach((task) => {
-      task.notificationCompleted = false
-      task.notificationLastNotifyTime = ''
-      task.notificationSuccessCount = 0
+      // 仅重置今天需要提醒的任务，或已完成标记（避免跨天一直不通知）
+      if (task.weeks?.[todayOfWeek]) {
+        task.notificationCompleted = false
+        task.notificationLastNotifyTime = ''
+        task.notificationSuccessCount = 0
+      }
     })
     todos.value = useStorage(`${nowDay.value.slice(0, 7)}`, {}).value
   })
@@ -74,12 +78,30 @@ export default defineStore('app', () => {
       notificationStartTime,
       notificationStartTimeHMS,
       notificationCompleted,
+      notificationEndTime,
+      notificationEndTimeHMS,
+      weeks, // 可选：alarmTask 的按周重复配置
     } = params
     if (notificationCompleted || !notification || !notificationStartTime) {
       return false
     }
 
-    return notificationLastNotifyTime
+    // alarmTask：若今天不在配置的提醒日中，跳过
+    if (Array.isArray(weeks) && !weeks[_now.day()]) {
+      return false
+    }
+
+    // 若当前时间已超过结束时间，不再通知
+    if (notificationEndTimeHMS || notificationEndTime) {
+      const endTime = notificationEndTimeHMS
+        ? getTodayDayjs(notificationEndTimeHMS)
+        : dayjs(notificationEndTime)
+      if (_now.isAfter(endTime)) {
+        return false
+      }
+    }
+
+    const afterStart = notificationLastNotifyTime
       ? _now.isAfter(
         dayjs(notificationLastNotifyTime).add(
           notificationRepeatTime * notificationRepeatTimebase,
@@ -91,6 +113,16 @@ export default defineStore('app', () => {
           ? getTodayDayjs(notificationStartTimeHMS)
           : dayjs(notificationStartTime)
       )
+
+    // 若有结束时间，需要同时确保当前时间未超过结束时间（间隔后可能越界）
+    if (afterStart && (notificationEndTimeHMS || notificationEndTime)) {
+      const endTime = notificationEndTimeHMS
+        ? getTodayDayjs(notificationEndTimeHMS)
+        : dayjs(notificationEndTime)
+      return !_now.isAfter(endTime)
+    }
+
+    return afterStart
   }
 
   // 执行通知检查
@@ -98,14 +130,17 @@ export default defineStore('app', () => {
     const _now = dayjs()
     for (let i = 0; i < nowDayTodos.value.length; i++) {
       const todo = nowDayTodos.value[i]
-      const { name, notificationRepeatCount } = todo
+      const { name, notificationRepeatCount, description } = todo
       if (checkItemIsNotifify(todo, _now)) {
         chromeNotification(
           `${generateRandomString(10)}%_%${NOTIFICATION_TODO}%_%${todo.id}`,
           {
             title: `提醒您：${name}`,
-            message: '任务即将开始，请尽快完成',
-            buttons: [{ title: '关闭通知' }],
+            message: description || '任务即将开始，请尽快完成',
+            buttons: [
+              { title: '关闭通知' },
+              { title: '今日不再提醒' },
+            ],
           }
         )
 
@@ -123,16 +158,16 @@ export default defineStore('app', () => {
     for (let i = 0; i < alarmTasks.value.length; i++) {
       const alarmTask = alarmTasks.value[i]
       const { notificationRepeatCount } = alarmTask
-      const isNotifyWeekDay = alarmTask.weeks[_now.day()]
-      if (isNotifyWeekDay && checkItemIsNotifify(alarmTask, _now)) {
+      // weeks 校验已移入 checkItemIsNotifify 内部
+      if (checkItemIsNotifify(alarmTask, _now)) {
         chromeNotification(
           `${generateRandomString(10)}%_%${NOTIFICATION_ALARM}%_%${alarmTask.id}`,
           {
             title: `提醒您：${alarmTask.name}`,
-            message: '任务即将开始，请尽快完成',
+            message: alarmTask.description || '任务即将开始，请尽快完成',
             buttons: [
               { title: '关闭通知' },
-              // { title: '执行任务' }
+              { title: '今日不再提醒' },
             ],
           }
         )
@@ -156,17 +191,21 @@ export default defineStore('app', () => {
       // 定时通知
       [NOTIFICATION_ALARM]: (btnIndex, id, handlerName, ...args) => {
         if (btnIndex === 0) {
-          // 关闭通知
+          // 关闭通知：仅关闭当前弹窗，不影响后续重复提醒（这里什么都不做，后面会自动 clear）
+        } else if (btnIndex === 1) {
+          // 今日不再提醒：标记完成，今日内不再重复
           const task = alarmTasks.value.find((task) => task.id == id)
-          task.notificationCompleted = true
+          if (task) task.notificationCompleted = true
         }
       },
       // todo通知
       [NOTIFICATION_TODO]: (btnIndex, todoId, handlerName, ...args) => {
         if (btnIndex === 0) {
-          // 关闭通知
+          // 关闭通知：仅关闭当前弹窗，不影响后续重复提醒
+        } else if (btnIndex === 1) {
+          // 今日不再提醒：标记完成，今日内不再重复
           const todo = nowDayTodos.value.find((todo) => todo.id == todoId)
-          todo.notificationCompleted = true
+          if (todo) todo.notificationCompleted = true
         }
         if (btnIndex === 1 && handlerName) {
           gHandlerMap[handlerName]?.(...args)

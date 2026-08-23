@@ -20,7 +20,7 @@
     >
       <div class="flex gap-5 mt-20 w-4/5 mx-auto">
         <div id="custom-app-container" class="flex-1 icon-card-container app-item-drop">
-          <AlarmTask />
+          <QuickNote />
           <GoOffWork />
 
           <MyIconCard
@@ -76,7 +76,7 @@
 <script setup>
 import IconLink from '@/_components/icons/IconLink.vue'
 import useAppStore from '@/_stores/app'
-import AlarmTask from '@/overrides/components/cmpCard/AlarmTask.vue'
+import QuickNote from '@/overrides/components/cmpCard/QuickNote.vue'
 import EditAppItem from '@/overrides/components/cmpCard/EditAppItem.vue'
 import GoOffWork from '@/overrides/components/cmpCard/GoOffWork.vue'
 import Todo from '@/overrides/components/cmpCard/Todo.vue'

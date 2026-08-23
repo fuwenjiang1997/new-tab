@@ -24,7 +24,7 @@
                   <span v-else class="block w-2 h-2 mr-1 rounded-full bg-orange-400" />
                 </template>
               </template>
-              <span class="cursor-pointer underline" @click="deleteTask(item)">
+              <span class="cursor-pointer underline" @click="deleteTask(item.id)">
                 删除
               </span>
             </div>
@@ -73,6 +73,13 @@
             />
           </a-form-item>
 
+          <a-form-item label="结束通知时间" name="notificationEndTime">
+            <a-time-picker
+              :value="form.notificationEndTime" format="HH:mm" value-format="YYYY-MM-DD HH:mm:ss"
+              @update:value="changeNotificationEndTime"
+            />
+          </a-form-item>
+
           <a-form-item label="通知间隔" name="notificationRepeatTime">
             <div class="flex">
               <a-input-number v-model:value="form.notificationRepeatTime" class="!w-[90px] mr-10">
@@ -81,7 +88,7 @@
                     <a-select-option :value="60 * 1000">
                       分
                     </a-select-option>
-                    <a-select-option :value="60 * 60 * 2000">
+                    <a-select-option :value="60 * 60 * 1000">
                       时
                     </a-select-option>
                   </a-select>
@@ -120,6 +127,8 @@ const baseTask = function () {
     notification: false,
     notificationStartTime: '',
     notificationStartTimeHMS: '',
+    notificationEndTime: '',
+    notificationEndTimeHMS: '',
     notificationLastNotifyTime: '', // 上一次通知的时间
     notificationRepeatCount: 0,
     notificationSuccessCount: 0, // 已通知次数
@@ -141,8 +150,6 @@ const weekOptions = [
 
 const changeFormNotification = (newStatus) => {
   if (newStatus && !form.value.notificationStartTime) {
-    const _now = dayjs()
-    changeNotificationStartTime(_now)
     changeNotificationStartTime(now.value)
   }
   form.value.notification = newStatus
@@ -151,6 +158,11 @@ const changeFormNotification = (newStatus) => {
 function changeNotificationStartTime(v) {
   form.value.notificationStartTime = dayjs(v).format('YYYY-MM-DD HH:mm:ss')
   form.value.notificationStartTimeHMS = dayjs(v).format('HH:mm:ss')
+}
+
+function changeNotificationEndTime(v) {
+  form.value.notificationEndTime = dayjs(v).format('YYYY-MM-DD HH:mm:ss')
+  form.value.notificationEndTimeHMS = dayjs(v).format('HH:mm:ss')
 }
 
 function editTask(v) {
