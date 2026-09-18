@@ -1,0 +1,1 @@
+import{R as e,i as t,t as n,y as r}from"./_plugin-vue_export-helper-CluTuJ67.js";var i={};function a(t,n){return e(),r(`div`,null,`你好`)}t(n(i,[[`render`,a]])).use(router).use(createPinia()).mount(`#app`);

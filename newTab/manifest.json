@@ -37,7 +37,7 @@
       ],
       "resources": [
         "src/contentScript/index.js",
-        "assets/index.js-C8rBAxw1.js"
+        "assets/index.js-W86PusgQ.js"
       ],
       "use_dynamic_url": false
     }
@@ -45,7 +45,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/index.js-loader-CkOi-tss.js"
+        "assets/index.js-W86PusgQ.js"
       ],
       "matches": [
         "<all_urls>"

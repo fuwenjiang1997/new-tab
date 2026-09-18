@@ -1,0 +1,1 @@
+import{o as e,t}from"./const-DlA0i8y9.js";var n=[],[r,i,a]=e(t,[]);async function o(){n=await a()}chrome.runtime.onMessage.addListener(async(e,t,r)=>{let{action:i,location:a}=e;i===`executeScript`&&Array.isArray(n)&&r(JSON.stringify(n))}),o(),setInterval(async()=>{o()},5e3);
